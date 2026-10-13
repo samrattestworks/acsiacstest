@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/acsiacstest/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#050B1A" />
+
+    <title>ACS IACS Student Chapter | Excellence in Molecular Sciences</title>
+    <meta
+      name="description"
+      content="Official student chapter of the American Chemical Society at the Indian Association for the Cultivation of Science (IACS), Kolkata. Advancing chemical sciences, research excellence, and scientific outreach."
+    />
+    <meta
+      name="keywords"
+      content="ACS, IACS, American Chemical Society, Indian Association for the Cultivation of Science, Chemistry, Research, Student Chapter, Kolkata, Science Outreach"
+    />
+    <meta name="author" content="ACS IACS Student Chapter" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://samrattestworks.github.io/acsiacstest/" />
+    <meta
+      property="og:title"
+      content="ACS IACS Student Chapter | Excellence in Molecular Sciences"
+    />
+    <meta
+      property="og:description"
+      content="Official student chapter of the American Chemical Society at IACS Kolkata. Advancing chemical sciences, research excellence, and scientific outreach."
+    />
+    <meta property="og:image" content="https://samrattestworks.github.io/acsiacstest/favicon.svg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://samrattestworks.github.io/acsiacstest/" />
+    <meta
+      name="twitter:title"
+      content="ACS IACS Student Chapter | Excellence in Molecular Sciences"
+    />
+    <meta
+      name="twitter:description"
+      content="Official student chapter of the American Chemical Society at IACS Kolkata. Advancing chemical sciences, research excellence, and scientific outreach."
+    />
+    <meta
+      name="twitter:image"
+      content="https://samrattestworks.github.io/acsiacstest/favicon.svg"
+    />
+
+    <!-- Prevent Theme Flash -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('acs_theme');
+          var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'light') {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else if (stored === 'dark' || (!stored && supportDarkMode)) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else if (!stored) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- GitHub Pages SPA routing restoration -->
+    <script>
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ACS IACS Student Chapter",
+        "alternateName": "American Chemical Society Student Chapter at IACS",
+        "url": "https://samrattestworks.github.io/acsiacstest/",
+        "logo": "https://samrattestworks.github.io/acsiacstest/favicon.svg",
+        "parentOrganization": {
+          "@type": "CollegeOrUniversity",
+          "name": "Indian Association for the Cultivation of Science",
+          "location": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Kolkata",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    </script>
+    <script type="module" crossorigin src="/acsiacstest/assets/index-BYdLAthv.js"></script>
+    <link rel="modulepreload" crossorigin href="/acsiacstest/assets/motion-vendor-DbBIdr6C.js">
+    <link rel="modulepreload" crossorigin href="/acsiacstest/assets/three-vendor-NnS-rrLN.js">
+    <link rel="stylesheet" crossorigin href="/acsiacstest/assets/index-DuHybllG.css">
+  </head>
+  <body
+    class="bg-background text-foreground antialiased selection:bg-accent/25 selection:text-accent min-h-screen"
+  >
+    <div id="root"></div>
+  </body>
+</html>
