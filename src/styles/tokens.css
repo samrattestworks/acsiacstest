@@ -1,0 +1,83 @@
+:root {
+  /* Light Theme (Accessible WCAG 2.2 AA) */
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+  --surface-glass: rgba(255, 255, 255, 0.78);
+  --border: rgba(15, 23, 42, 0.12);
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-glow: rgba(2, 132, 199, 0.25);
+
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-inverse: #ffffff;
+
+  --primary: #1d4ed8;
+  --primary-hover: #1e40af;
+  --primary-foreground: #ffffff;
+
+  --accent: #0284c7;
+  --accent-glow: rgba(2, 132, 199, 0.18);
+  --accent-foreground: #ffffff;
+
+  --amber: #d97706;
+  --success: #059669;
+  --warning: #d97706;
+  --destructive: #dc2626;
+
+  --grain-opacity: 0.02;
+  --mesh-opacity: 0.55;
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+}
+
+.dark,
+[data-theme='dark'] {
+  /* Dark Theme Default (Deep Ink Navy & Luminescent Bonds) */
+  --bg: #050b1a;
+  --surface: #0a1329;
+  --surface-hover: #111e3d;
+  --surface-glass: rgba(10, 19, 41, 0.75);
+  --border: rgba(56, 189, 248, 0.14);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(0, 210, 255, 0.28);
+
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-inverse: #050b1a;
+
+  --primary: #2563eb;
+  --primary-hover: #3b82f6;
+  --primary-foreground: #ffffff;
+
+  --accent: #00d2ff;
+  --accent-glow: rgba(0, 210, 255, 0.22);
+  --accent-foreground: #050b1a;
+
+  --amber: #f59e0b;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --destructive: #ef4444;
+
+  --grain-opacity: 0.035;
+  --mesh-opacity: 0.7;
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(56, 189, 248, 0.1);
+}
+
+/* Fluid Typography and Spacing Variables */
+:root {
+  --font-display:
+    'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Fluid Display Sizes */
+  --step-title: clamp(2.5rem, 6vw + 1rem, 4.75rem);
+  --step-h2: clamp(1.85rem, 3.5vw + 0.5rem, 2.85rem);
+  --step-h3: clamp(1.25rem, 2vw + 0.25rem, 1.75rem);
+  --step-body: clamp(0.95rem, 0.5vw + 0.8rem, 1.125rem);
+  --step-small: clamp(0.75rem, 0.25vw + 0.7rem, 0.875rem);
+
+  /* Easing curve requested in brief: cubic-bezier(0.22, 1, 0.36, 1) */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-smooth: 400ms var(--ease-spring);
+}
