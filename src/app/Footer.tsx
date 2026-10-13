@@ -103,10 +103,18 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Copyright Bar */}
-        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-muted/80 text-center sm:text-left">
-          <p>{siteConfig.footer.copyrightText}</p>
-          <p className="sm:text-right">{siteConfig.footer.subtext}</p>
+        {/* Copyright & Attribution Bar */}
+        <div className="pt-6 sm:pt-8 flex flex-col md:flex-row items-center justify-between gap-3 text-xs font-mono text-muted/80 text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2.5">
+            <p>{siteConfig.footer.copyrightText}</p>
+            {siteConfig.footer.creatorText && (
+              <>
+                <span className="hidden sm:inline text-border">•</span>
+                <p className="text-accent/90 font-medium">{siteConfig.footer.creatorText}</p>
+              </>
+            )}
+          </div>
+          <p className="md:text-right text-muted/70">{siteConfig.footer.subtext}</p>
         </div>
       </div>
     </footer>

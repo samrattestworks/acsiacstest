@@ -48,4 +48,10 @@ describe('site.ts content and structure integrity', () => {
       expect(['Core', 'Leads', 'Members']).toContain(member.group);
     });
   });
+
+  it('contains enduring footer copyright and creator attribution', () => {
+    expect(siteConfig.footer.copyrightText).toBeTruthy();
+    expect(siteConfig.footer.creatorText).toContain('madewithcaresamratchakraborty');
+    expect(siteConfig.footer.subtext).toBeTruthy();
+  });
 });

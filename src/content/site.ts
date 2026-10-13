@@ -97,6 +97,7 @@ export interface SiteConfig {
   team: TeamMember[];
   footer: {
     copyrightText: string;
+    creatorText?: string;
     subtext: string;
   };
 }
@@ -368,7 +369,8 @@ export const siteConfig: SiteConfig = {
   ],
 
   footer: {
-    copyrightText: '© 2026 @madwwihcaresamratchakraborty',
+    copyrightText: `© 2024–${new Date().getFullYear()} ACS IACS Student Chapter. All rights reserved.`,
+    creatorText: 'Made with care by @madewithcaresamratchakraborty',
     subtext:
       'Affiliated with the American Chemical Society and Indian Association for the Cultivation of Science.',
   },
