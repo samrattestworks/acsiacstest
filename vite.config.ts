@@ -1,0 +1,27 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import path from 'node:path';
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [tailwindcss(), react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+  base: process.env.BASE_URL || (process.env.NODE_ENV === 'production' ? '/acsiacstest/' : '/'),
+  build: {
+    target: 'esnext',
+    cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          'motion-vendor': ['framer-motion', 'gsap', 'lenis'],
+        },
+      },
+    },
+  },
+});
