@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { cn } from '@/lib/cn';
 
 export interface TiltCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -12,17 +13,18 @@ export interface TiltCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const TiltCard: React.FC<TiltCardProps> = ({
   children,
   className,
-  maxTilt = 10,
+  maxTilt = 8,
   glare = true,
   ...props
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const isDesktop = useMediaQuery('(hover: hover) and (pointer: fine)');
   const [transform, setTransform] = useState('');
   const [glarePosition, setGlarePosition] = useState({ x: 50, y: 50, opacity: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (prefersReducedMotion || !cardRef.current) return;
+    if (prefersReducedMotion || !isDesktop || !cardRef.current) return;
 
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -48,6 +50,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   };
 
   const handleMouseLeave = () => {
+    if (!isDesktop) return;
     setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
     setGlarePosition((prev) => ({ ...prev, opacity: 0 }));
   };
@@ -62,13 +65,13 @@ export const TiltCard: React.FC<TiltCardProps> = ({
         className
       )}
       style={{
-        transform: prefersReducedMotion ? 'none' : transform,
-        transformStyle: 'preserve-3d',
+        transform: prefersReducedMotion || !isDesktop ? 'none' : transform,
+        transformStyle: isDesktop ? 'preserve-3d' : 'flat',
       }}
       {...props}
     >
-      {/* 3D Dynamic Glare Effect */}
-      {glare && !prefersReducedMotion && (
+      {/* 3D Dynamic Glare Effect - Desktop fine pointer only */}
+      {glare && isDesktop && !prefersReducedMotion && (
         <div
           className="pointer-events-none absolute inset-0 transition-opacity duration-300 z-20"
           style={{

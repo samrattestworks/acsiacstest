@@ -1,21 +1,56 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { siteConfig } from '@/content/site';
 import { LogoPlaceholder } from '@/components/ui/LogoPlaceholder';
 import { SocialLink } from '@/components/ui/SocialLink';
+import { scrollToElement } from '@/lib/navigation';
 
 export const Footer: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const isHomePage = location.pathname === '/' || location.pathname === '';
+
+    if (href === '/') {
+      if (isHomePage) {
+        scrollToElement('top');
+      } else {
+        navigate('/');
+      }
+      return;
+    }
+
+    if (href === '/#team' || href === '#team') {
+      scrollToElement('team');
+      return;
+    }
+
+    if (href.startsWith('/#')) {
+      const sectionId = href.replace('/#', '');
+      if (isHomePage) {
+        scrollToElement(sectionId);
+      } else {
+        navigate(`/#${sectionId}`);
+      }
+      return;
+    }
+
+    navigate(href);
+  };
+
   return (
     <footer
       role="contentinfo"
-      className="relative z-10 border-t border-border bg-surface/40 backdrop-blur-md pt-16 pb-12 mt-24"
+      className="relative z-10 border-t border-border bg-surface/40 backdrop-blur-md pt-12 sm:pt-16 pb-10 sm:pb-12 mt-16 sm:mt-24"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-border/60">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-12 pb-10 sm:pb-12 border-b border-border/60">
           {/* Brand & Mission Column */}
           <div className="md:col-span-5 flex flex-col gap-4">
             <LogoPlaceholder />
-            <p className="text-sm text-muted max-w-sm mt-2 leading-relaxed">
+            <p className="text-sm text-muted max-w-sm mt-1 sm:mt-2 leading-relaxed">
               {siteConfig.meta.heroDescription.split('\n')[0]}
             </p>
             <span className="font-mono text-xs text-muted/70">{siteConfig.meta.heroSubtitle}</span>
@@ -29,18 +64,19 @@ export const Footer: React.FC = () => {
             <ul className="flex flex-col gap-2.5 text-sm text-muted">
               {siteConfig.navigation.links.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="hover:text-accent transition-colors focus-visible:outline-accent"
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="hover:text-accent transition-colors focus-visible:outline-accent cursor-pointer py-1 inline-block"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
               <li>
                 <Link
                   to="/join"
-                  className="hover:text-accent transition-colors font-medium text-foreground focus-visible:outline-accent"
+                  className="hover:text-accent transition-colors font-medium text-foreground focus-visible:outline-accent py-1 inline-block"
                 >
                   Join Us
                 </Link>
@@ -68,9 +104,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Copyright Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted/80">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-muted/80 text-center sm:text-left">
           <p>{siteConfig.footer.copyrightText}</p>
-          <p className="text-center sm:text-right">{siteConfig.footer.subtext}</p>
+          <p className="sm:text-right">{siteConfig.footer.subtext}</p>
         </div>
       </div>
     </footer>

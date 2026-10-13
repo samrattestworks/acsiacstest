@@ -38,6 +38,14 @@ export default [
     },
   },
   {
+    files: ['**/*.{js,cjs,mjs}'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
     ignores: ['dist', 'node_modules', 'playwright-report', 'test-results', 'coverage'],
   },
 ];

@@ -3,7 +3,8 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export const Cursor: React.FC = () => {
-  const isFinePointer = useMediaQuery('(pointer: fine)');
+  // Only activate on true desktop mouse environments (hover + fine pointer)
+  const isDesktopPointer = useMediaQuery('(hover: hover) and (pointer: fine)');
   const prefersReducedMotion = useReducedMotion();
   const [cursorType, setCursorType] = useState<'default' | 'interactive' | 'drag'>('default');
   const [isVisible, setIsVisible] = useState(false);
@@ -16,7 +17,8 @@ export const Cursor: React.FC = () => {
   const ringPos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
-    if (!isFinePointer || prefersReducedMotion) return;
+    // Strictly disable on touchscreens or when reduced motion is preferred
+    if (!isDesktopPointer || prefersReducedMotion) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
@@ -77,9 +79,9 @@ export const Cursor: React.FC = () => {
       document.removeEventListener('mouseenter', handleMouseEnter);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isFinePointer, prefersReducedMotion, isVisible]);
+  }, [isDesktopPointer, prefersReducedMotion, isVisible]);
 
-  if (!isFinePointer || prefersReducedMotion || !isVisible) {
+  if (!isDesktopPointer || prefersReducedMotion || !isVisible) {
     return null;
   }
 

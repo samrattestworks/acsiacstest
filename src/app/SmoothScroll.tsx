@@ -19,17 +19,22 @@ export const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
       return;
     }
 
+    const isTouch =
+      typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: isTouch ? 0.8 : 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
+      syncTouch: false, // Ensures natural momentum scrolling on mobile devices
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
     });
 
     lenisRef.current = lenis;
+    window.__lenis = lenis;
 
     // Synchronize Lenis with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
@@ -42,6 +47,7 @@ export const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      window.__lenis = undefined;
       lenis.destroy();
       gsap.ticker.remove(updateLenis);
     };

@@ -11,23 +11,25 @@ export const Action: React.FC = () => {
 
   return (
     <section
-      className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto select-none"
+      className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto select-none"
       aria-label="Action panel"
     >
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
         {/* Card 1: Application */}
-        <Card spotlight={true} className="flex flex-col justify-between p-7 gap-6">
-          <div className="flex flex-col gap-4">
+        <Card spotlight={true} className="flex flex-col justify-between p-5 sm:p-7 gap-5 sm:gap-6">
+          <div className="flex flex-col gap-3.5 sm:gap-4">
             <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <FileText className="w-6 h-6" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <FileText className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <Pill variant="accent">Cycle 2024–26</Pill>
             </div>
 
             <div>
-              <h2 className="font-display font-bold text-xl text-foreground">Application</h2>
-              <p className="text-sm text-muted mt-1 leading-relaxed">
+              <h2 className="font-display font-bold text-lg sm:text-xl text-foreground">
+                Application
+              </h2>
+              <p className="text-xs sm:text-sm text-muted mt-1 leading-relaxed">
                 Submit candidate credentials for active student chapter standing and committee
                 eligibility.
               </p>
@@ -37,6 +39,7 @@ export const Action: React.FC = () => {
           <Button
             href={siteConfig.links.application}
             variant="primary"
+            className="w-full min-h-[46px]"
             iconRight={<ArrowUpRight className="w-4 h-4 ml-0.5" />}
           >
             Apply for Chapter
@@ -46,23 +49,23 @@ export const Action: React.FC = () => {
         {/* Card 2: Registration (Controlled by siteConfig.registration.open boolean) */}
         <Card
           spotlight={true}
-          className={`flex flex-col justify-between p-7 gap-6 border ${
+          className={`flex flex-col justify-between p-5 sm:p-7 gap-5 sm:gap-6 border ${
             isRegistrationOpen ? 'border-emerald-500/30' : 'border-border'
           }`}
         >
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3.5 sm:gap-4">
             <div className="flex items-center justify-between">
               <div
-                className={`w-12 h-12 rounded-xl border flex items-center justify-center ${
+                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl border flex items-center justify-center ${
                   isRegistrationOpen
                     ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
                     : 'bg-surface border-border text-muted'
                 }`}
               >
                 {isRegistrationOpen ? (
-                  <CalendarCheck className="w-6 h-6" />
+                  <CalendarCheck className="w-5 h-5 sm:w-6 sm:h-6" />
                 ) : (
-                  <Lock className="w-6 h-6" />
+                  <Lock className="w-5 h-5 sm:w-6 sm:h-6" />
                 )}
               </div>
 
@@ -74,8 +77,10 @@ export const Action: React.FC = () => {
             </div>
 
             <div>
-              <h2 className="font-display font-bold text-xl text-foreground">Registration</h2>
-              <p className="text-sm text-muted mt-1 leading-relaxed">
+              <h2 className="font-display font-bold text-lg sm:text-xl text-foreground">
+                Registration
+              </h2>
+              <p className="text-xs sm:text-sm text-muted mt-1 leading-relaxed">
                 {isRegistrationOpen
                   ? siteConfig.registration.openMessage
                   : siteConfig.registration.closedMessage}
@@ -88,13 +93,13 @@ export const Action: React.FC = () => {
               <Button
                 href={siteConfig.links.registration}
                 variant="primary"
-                className="bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-500/20 animate-pulse"
+                className="w-full min-h-[46px] bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-500/20 animate-pulse"
                 iconRight={<ArrowUpRight className="w-4 h-4 ml-0.5" />}
               >
                 Complete Registration
               </Button>
             ) : (
-              <Button variant="secondary" disabled className="w-full">
+              <Button variant="secondary" disabled className="w-full min-h-[46px]">
                 Registrations Closed
               </Button>
             )}
@@ -104,7 +109,7 @@ export const Action: React.FC = () => {
                 href={siteConfig.links.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-mono text-center text-accent hover:underline mt-1"
+                className="text-xs font-mono text-center text-accent hover:underline mt-1 py-1"
               >
                 Follow us for upcoming announcements →
               </a>
@@ -113,25 +118,25 @@ export const Action: React.FC = () => {
         </Card>
 
         {/* Card 3: Connect */}
-        <Card spotlight={true} className="flex flex-col justify-between p-7 gap-6">
-          <div className="flex flex-col gap-4">
+        <Card spotlight={true} className="flex flex-col justify-between p-5 sm:p-7 gap-5 sm:gap-6">
+          <div className="flex flex-col gap-3.5 sm:gap-4">
             <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-xl bg-amber/10 border border-amber/20 flex items-center justify-center text-amber">
-                <Share2 className="w-6 h-6" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber/10 border border-amber/20 flex items-center justify-center text-amber">
+                <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <Pill variant="default">All Feeds</Pill>
             </div>
 
             <div>
-              <h2 className="font-display font-bold text-xl text-foreground">Connect</h2>
-              <p className="text-sm text-muted mt-1 leading-relaxed">
+              <h2 className="font-display font-bold text-lg sm:text-xl text-foreground">Connect</h2>
+              <p className="text-xs sm:text-sm text-muted mt-1 leading-relaxed">
                 Reach the chapter team directly across all official scientific networks and
                 channels.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 pt-2">
+          <div className="flex flex-wrap items-center gap-2 pt-1 sm:pt-2">
             <SocialLink platform="instagram" href={siteConfig.links.social.instagram} />
             <SocialLink platform="linkedin" href={siteConfig.links.social.linkedin} />
             <SocialLink platform="x" href={siteConfig.links.social.x} />

@@ -28,11 +28,11 @@ export const TeamGrid: React.FC = () => {
   return (
     <section
       id="team"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24 select-none"
+      className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24 select-none"
       aria-label="Full team directory"
     >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
         <div className="flex flex-col gap-3">
           <span className="font-mono text-xs uppercase tracking-widest text-accent font-semibold">
             // Full Roster
@@ -49,7 +49,7 @@ export const TeamGrid: React.FC = () => {
         <div
           role="tablist"
           aria-label="Filter team by role group"
-          className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-surface border border-border shadow-xs"
+          className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-surface border border-border shadow-xs w-full sm:w-auto"
         >
           {GROUPS.map((group) => {
             const isActive = activeFilter === group;
@@ -59,7 +59,7 @@ export const TeamGrid: React.FC = () => {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => handleFilterChange(group)}
-                className={`relative px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer select-none focus-visible:outline-accent ${
+                className={`relative flex-1 sm:flex-initial min-h-[40px] px-3.5 py-2 rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer select-none focus-visible:outline-accent flex items-center justify-center ${
                   isActive ? 'text-accent-foreground' : 'text-muted hover:text-foreground'
                 }`}
               >
@@ -123,7 +123,7 @@ export const TeamGrid: React.FC = () => {
                           platform="linkedin"
                           href={member.links.linkedin}
                           magnetic={false}
-                          className="w-7 h-7 rounded-lg"
+                          className="w-8 h-8 rounded-lg"
                           iconClassName="w-3.5 h-3.5"
                         />
                       )}
@@ -132,7 +132,7 @@ export const TeamGrid: React.FC = () => {
                           platform="instagram"
                           href={member.links.instagram}
                           magnetic={false}
-                          className="w-7 h-7 rounded-lg"
+                          className="w-8 h-8 rounded-lg"
                           iconClassName="w-3.5 h-3.5"
                         />
                       )}
@@ -141,7 +141,7 @@ export const TeamGrid: React.FC = () => {
                           platform="github"
                           href={member.links.github}
                           magnetic={false}
-                          className="w-7 h-7 rounded-lg"
+                          className="w-8 h-8 rounded-lg"
                           iconClassName="w-3.5 h-3.5"
                         />
                       )}
@@ -150,7 +150,7 @@ export const TeamGrid: React.FC = () => {
                           platform="email"
                           href={member.links.email}
                           magnetic={false}
-                          className="w-7 h-7 rounded-lg"
+                          className="w-8 h-8 rounded-lg"
                           iconClassName="w-3.5 h-3.5"
                         />
                       )}

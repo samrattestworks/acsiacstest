@@ -136,9 +136,9 @@ export const siteConfig: SiteConfig = {
   navigation: {
     links: [
       { label: 'Home', href: '/' },
-      { label: 'About', href: '/about' },
-      { label: 'Team', href: '/team' },
-      { label: 'Join', href: '/join' },
+      { label: 'About', href: '/#about' },
+      { label: 'Team', href: '/#team' },
+      { label: 'Why Join', href: '/#why-join' },
     ],
     cta: {
       label: 'Join Us',

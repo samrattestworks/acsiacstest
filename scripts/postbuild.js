@@ -12,6 +12,8 @@ if (fs.existsSync(distDir)) {
       fs.mkdirSync(targetDir, { recursive: true });
       fs.copyFileSync(indexHtmlPath, path.join(targetDir, 'index.html'));
     });
-    console.log(`[postbuild] Successfully generated static entry points for routes: ${routes.join(', ')}`);
+    console.log(
+      `[postbuild] Successfully generated static entry points for routes: ${routes.join(', ')}`
+    );
   }
 }
