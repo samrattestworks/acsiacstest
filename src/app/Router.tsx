@@ -5,6 +5,8 @@ import { ErrorBoundary } from './ErrorBoundary';
 
 // Lazy load route pages for optimal initial chunk size (<150KB gzip)
 const Home = lazy(() => import('@/pages/Home'));
+const About = lazy(() => import('@/pages/About'));
+const Team = lazy(() => import('@/pages/Team'));
 const Join = lazy(() => import('@/pages/Join'));
 const NotFound = lazy(() => import('@/pages/NotFound').then((m) => ({ default: m.NotFound })));
 
@@ -31,6 +33,22 @@ export const AppRouter: React.FC = () => {
               element={
                 <Suspense fallback={<RouteLoading />}>
                   <Home />
+                </Suspense>
+              }
+            />
+            <Route
+              path="about"
+              element={
+                <Suspense fallback={<RouteLoading />}>
+                  <About />
+                </Suspense>
+              }
+            />
+            <Route
+              path="team"
+              element={
+                <Suspense fallback={<RouteLoading />}>
+                  <Team />
                 </Suspense>
               }
             />

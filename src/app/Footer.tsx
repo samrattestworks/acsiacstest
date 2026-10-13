@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { siteConfig } from '@/content/site';
 import { LogoPlaceholder } from '@/components/ui/LogoPlaceholder';
 import { SocialLink } from '@/components/ui/SocialLink';
@@ -28,21 +29,21 @@ export const Footer: React.FC = () => {
             <ul className="flex flex-col gap-2.5 text-sm text-muted">
               {siteConfig.navigation.links.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="hover:text-accent transition-colors focus-visible:outline-accent"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
-                <a
-                  href="/join"
+                <Link
+                  to="/join"
                   className="hover:text-accent transition-colors font-medium text-foreground focus-visible:outline-accent"
                 >
                   Join Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

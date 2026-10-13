@@ -103,7 +103,7 @@ export const Hero: React.FC = () => {
             >
               Join Us
             </Button>
-            <Button href="#about" variant="secondary" size="lg">
+            <Button to="/about" variant="secondary" size="lg">
               Learn More
             </Button>
           </motion.div>

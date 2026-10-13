@@ -66,15 +66,23 @@ export const Navbar: React.FC = () => {
             aria-label="Main Navigation"
             className="hidden md:flex items-center gap-1 lg:gap-2"
           >
-            {siteConfig.navigation.links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-muted hover:text-foreground hover:bg-surface/50 transition-colors focus-visible:outline-accent"
-              >
-                {link.label}
-              </a>
-            ))}
+            {siteConfig.navigation.links.map((link) => {
+              const isActive = location.pathname === link.href;
+              return (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className={cn(
+                    'px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors focus-visible:outline-accent',
+                    isActive
+                      ? 'text-accent bg-accent/10 border border-accent/20'
+                      : 'text-muted hover:text-foreground hover:bg-surface/50 border border-transparent'
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right Action Cluster */}
@@ -117,16 +125,27 @@ export const Navbar: React.FC = () => {
         aria-hidden={!mobileMenuOpen}
       >
         <nav className="flex flex-col gap-4 mt-6">
-          {siteConfig.navigation.links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-2xl font-display font-semibold text-foreground hover:text-accent transition-colors py-2 border-b border-border/40"
-            >
-              {link.label}
-            </a>
-          ))}
+          {siteConfig.navigation.links.map((link) => {
+            const isActive = location.pathname === link.href;
+            return (
+              <Link
+                key={link.label}
+                to={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  'text-2xl font-display font-semibold transition-colors py-2 border-b border-border/40 flex items-center justify-between',
+                  isActive ? 'text-accent' : 'text-foreground hover:text-accent'
+                )}
+              >
+                <span>{link.label}</span>
+                {isActive && (
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-accent/10 border border-accent/20 text-accent">
+                    Active
+                  </span>
+                )}
+              </Link>
+            );
+          })}
           <Link
             to={siteConfig.navigation.cta.href}
             onClick={() => setMobileMenuOpen(false)}

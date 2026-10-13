@@ -61,7 +61,7 @@ export const TeamPreview: React.FC = () => {
           </div>
 
           <Button
-            to="/join#team"
+            to="/team"
             variant="outline"
             iconRight={<ArrowUpRight className="w-4 h-4 ml-0.5" />}
           >

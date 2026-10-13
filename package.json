@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/postbuild.js",
     "preview": "vite preview",
     "lint": "eslint . --max-warnings 0",
     "format:check": "prettier --check .",
