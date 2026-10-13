@@ -9,18 +9,18 @@
 
 Tokens are defined in `src/styles/tokens.css` as CSS custom properties and mapped to Tailwind CSS v4 variables in `src/styles/globals.css`.
 
-| Token | Dark (Default) | Light | Description |
-|---|---|---|---|
-| `--bg` | `#050B1A` | `#F8FAFC` | Deep ink navy background / Slate white |
-| `--surface` | `#0A1329` | `#FFFFFF` | Lifted glass card surface |
-| `--surface-hover` | `#111E3D` | `#F1F5F9` | Hover card surface |
-| `--border` | `rgba(56, 189, 248, 0.14)` | `rgba(15, 23, 42, 0.12)` | Subtle cyan-ice border |
-| `--text` | `#F1F5F9` | `#0F172A` | Primary high-contrast body text (>15:1 contrast) |
-| `--text-muted` | `#94A3B8` | `#475569` | Secondary metadata text (>6:1 contrast) |
-| `--primary` | `#2563EB` | `#1D4ED8` | ACS royal cobalt blue |
-| `--accent` | `#00D2FF` | `#0284C7` | Electric cyan luminescent accent |
-| `--amber` | `#F59E0B` | `#D97706` | Warm amber highlight |
-| `--success` | `#10B981` | `#059669` | Open registration & active indicators |
+| Token             | Dark (Default)             | Light                    | Description                                      |
+| ----------------- | -------------------------- | ------------------------ | ------------------------------------------------ |
+| `--bg`            | `#050B1A`                  | `#F8FAFC`                | Deep ink navy background / Slate white           |
+| `--surface`       | `#0A1329`                  | `#FFFFFF`                | Lifted glass card surface                        |
+| `--surface-hover` | `#111E3D`                  | `#F1F5F9`                | Hover card surface                               |
+| `--border`        | `rgba(56, 189, 248, 0.14)` | `rgba(15, 23, 42, 0.12)` | Subtle cyan-ice border                           |
+| `--text`          | `#F1F5F9`                  | `#0F172A`                | Primary high-contrast body text (>15:1 contrast) |
+| `--text-muted`    | `#94A3B8`                  | `#475569`                | Secondary metadata text (>6:1 contrast)          |
+| `--primary`       | `#2563EB`                  | `#1D4ED8`                | ACS royal cobalt blue                            |
+| `--accent`        | `#00D2FF`                  | `#0284C7`                | Electric cyan luminescent accent                 |
+| `--amber`         | `#F59E0B`                  | `#D97706`                | Warm amber highlight                             |
+| `--success`       | `#10B981`                  | `#059669`                | Open registration & active indicators            |
 
 All color combinations have been verified against **WCAG 2.2 AA** contrast standards.
 
@@ -35,6 +35,7 @@ Self-hosted via Fontsource to eliminate external round-trips:
 - **Monospace**: JetBrains Mono (`var(--font-mono)`) — Elemental tags, metadata, dates, numbers.
 
 ### Fluid Sizes
+
 - Title: `clamp(2.5rem, 6vw + 1rem, 4.75rem)`
 - H2: `clamp(1.85rem, 3.5vw + 0.5rem, 2.85rem)`
 - H3: `clamp(1.25rem, 2vw + 0.25rem, 1.75rem)`

@@ -35,10 +35,12 @@ acsiacstest/
 ## 🚀 1. How to Run Locally
 
 ### Prerequisites
+
 - Node.js >= 20.18.0 LTS
 - npm >= 10.8.0
 
 ### Commands
+
 ```bash
 # Clone the repository
 git clone https://github.com/samrattestworks/acsiacstest.git
@@ -120,12 +122,15 @@ No other components or styles need to be touched.
 ## 🚢 5. How to Deploy to GitHub Pages
 
 ### Automatic CI/CD
+
 Every commit pushed to the `master` branch triggers `.github/workflows/deploy.yml`, which:
+
 1. Runs full validation (`npm run lint`, `tsc -b`, `npm test`).
 2. Builds the Vite production bundle with base URL set to `/acsiacstest/`.
 3. Publishes artifacts directly to GitHub Pages via the official GitHub Pages deployment action.
 
 ### Manual Build
+
 ```bash
 BASE_URL=/acsiacstest/ npm run build
 # Files ready in dist/
@@ -144,4 +149,5 @@ BASE_URL=/acsiacstest/ npm run build
 ---
 
 ## 📄 License
+
 MIT © 2024–2026 ACS IACS Student Chapter & Samrat Chakraborty.
