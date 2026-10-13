@@ -368,7 +368,7 @@ export const siteConfig: SiteConfig = {
   ],
 
   footer: {
-    copyrightText: '© 2024-2026 ACS IACS Student Chapter. All rights reserved.',
+    copyrightText: '© 2026 @madwwihcaresamratchakraborty',
     subtext:
       'Affiliated with the American Chemical Society and Indian Association for the Cultivation of Science.',
   },
