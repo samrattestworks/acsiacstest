@@ -9,7 +9,6 @@ import {
   Mail,
   GraduationCap,
   Sparkles,
-  Info,
   Calendar,
   ShieldCheck,
 } from 'lucide-react';
@@ -25,9 +24,9 @@ export const Register: React.FC = () => {
 
   useEffect(() => {
     updatePageSeo({
-      title: 'Event Registration (Closed) | ACS IACS Student Chapter',
+      title: 'Scivision 2026 Registration | ACS IACS Student Chapter',
       description:
-        'Official event and symposium registration portal for the ACS IACS Student Chapter. Delegate registration is currently closed between event cycles. Chapter membership is always available.',
+        'Official event and symposium registration portal for the ACS IACS Student Chapter. Registration for Scivision 2026 will open soon. Chapter membership is always open.',
       canonical: `${siteConfig.meta.seo.canonical}register`,
     });
   }, []);
@@ -85,8 +84,8 @@ export const Register: React.FC = () => {
                 Looking to Join the Chapter?
               </h2>
               <p className="text-xs sm:text-sm text-muted leading-relaxed font-body max-w-xl">
-                This page is specifically for <strong>Event & Symposium Registration</strong>{' '}
-                (currently closed between cycles).{' '}
+                This page is specifically for <strong>Scivision 2026 Event Registration</strong>{' '}
+                (opening soon).{' '}
                 <strong>Chapter Membership is ALWAYS open and warmly encouraged</strong> for all
                 students, research scholars, and postdocs across IACS. Anyone can apply anytime!
               </p>
@@ -115,14 +114,14 @@ export const Register: React.FC = () => {
             </div>
             <div className="flex flex-col gap-1">
               <h2 className="font-display font-bold text-base sm:text-lg text-foreground flex items-center gap-2">
-                Event Registration Inactive Between Cycles
+                Scivision 2026 Registration
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/20 text-amber font-semibold uppercase">
-                  Locked
+                  Opening Soon
                 </span>
               </h2>
               <p className="text-xs sm:text-sm text-muted leading-relaxed max-w-xl font-body">
-                {siteConfig.registration.closedMessage} Review the placeholder event delegate form
-                below to prepare your credentials for the next upcoming symposium cycle.
+                Registration for Scivision 2026 will open soon. Follow our official channels for
+                announcements and intake deadlines.
               </p>
             </div>
           </div>
@@ -193,33 +192,18 @@ export const Register: React.FC = () => {
               <FileText className="w-5 h-5 text-accent" />
               <div>
                 <h3 className="font-display font-bold text-lg sm:text-xl text-foreground">
-                  Official Event & Symposium Delegate Form
+                  Scivision 2026 Delegate Registration Form
                 </h3>
                 <span className="font-mono text-xs text-muted">
-                  Form Document Ref: IACS-ACS/EVENT-REG-2026 // Status: Closed Between Events
+                  Official Registration Portal · IACS Kolkata
                 </span>
               </div>
             </div>
 
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface border border-border/80 text-muted font-mono text-xs">
               <Lock className="w-3.5 h-3.5 text-amber" />
-              <span>Event Submissions Locked</span>
+              <span>Registration Opening Soon</span>
             </div>
-          </div>
-
-          {/* Form Notice */}
-          <div className="p-3.5 rounded-xl bg-surface-hover/60 border border-border/60 flex items-start gap-2.5 text-xs font-mono text-muted">
-            <Info className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-            <p className="leading-relaxed">
-              This form is in <strong className="text-foreground">Read-Only Preview Mode</strong>{' '}
-              for scheduled academic events and symposia. Inputs are pre-formatted with academic
-              placeholders to guide your delegate credential preparation. (Note: Chapter membership
-              is always available year-round at{' '}
-              <a href="#/join" className="text-accent underline">
-                Join Us
-              </a>
-              ).
-            </p>
           </div>
 
           <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-8 opacity-85">
@@ -232,10 +216,7 @@ export const Register: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-xs text-muted flex items-center justify-between">
-                    <span>Full Name *</span>
-                    <span className="text-[10px] text-muted/60">[Placeholder]</span>
-                  </label>
+                  <label className="font-mono text-xs text-muted">Full Name *</label>
                   <input
                     type="text"
                     disabled
@@ -245,9 +226,8 @@ export const Register: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-xs text-muted flex items-center justify-between">
-                    <span>Institutional Email Address *</span>
-                    <span className="text-[10px] text-muted/60">[Placeholder]</span>
+                  <label className="font-mono text-xs text-muted">
+                    Institutional Email Address *
                   </label>
                   <input
                     type="email"
@@ -258,10 +238,7 @@ export const Register: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-xs text-muted flex items-center justify-between">
-                    <span>Phone / WhatsApp Contact *</span>
-                    <span className="text-[10px] text-muted/60">[Placeholder]</span>
-                  </label>
+                  <label className="font-mono text-xs text-muted">Phone / WhatsApp Contact *</label>
                   <input
                     type="tel"
                     disabled
@@ -271,10 +248,7 @@ export const Register: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-xs text-muted flex items-center justify-between">
-                    <span>Institution / Campus *</span>
-                    <span className="text-[10px] text-muted/60">[Pre-filled]</span>
-                  </label>
+                  <label className="font-mono text-xs text-muted">Institution / Campus *</label>
                   <input
                     type="text"
                     disabled
@@ -372,11 +346,10 @@ export const Register: React.FC = () => {
               <div className="p-6 rounded-2xl border-2 border-dashed border-border/80 bg-surface/40 flex flex-col items-center justify-center gap-2 text-center">
                 <Lock className="w-6 h-6 text-muted/60" />
                 <span className="font-mono text-xs text-foreground font-semibold">
-                  File Upload Inactive
+                  Abstract Document Upload
                 </span>
                 <span className="font-mono text-[11px] text-muted">
-                  Document submission dropzone will activate once event registration officially
-                  opens.
+                  Document submission activates when registration opens.
                 </span>
               </div>
             </div>
@@ -385,7 +358,7 @@ export const Register: React.FC = () => {
             <div className="pt-4 border-t border-border/70 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-xs font-mono text-muted">
                 <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
-                <span>Symposium Academic Oversight Committee · IACS Kolkata</span>
+                <span>Admissions & Credentials Committee · IACS Kolkata</span>
               </div>
 
               <button
@@ -394,7 +367,7 @@ export const Register: React.FC = () => {
                 className="w-full sm:w-auto px-6 py-3 rounded-xl bg-muted/20 border border-border text-muted font-display font-semibold text-sm flex items-center justify-center gap-2 cursor-not-allowed"
               >
                 <Lock className="w-4 h-4" />
-                <span>Event Registrations Closed — Submissions Locked</span>
+                <span>Registration Opening Soon</span>
               </button>
             </div>
           </form>

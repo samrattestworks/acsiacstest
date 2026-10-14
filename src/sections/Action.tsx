@@ -90,8 +90,7 @@ export const Action: React.FC = () => {
                 Event Registration
               </h2>
               <p className="text-xs sm:text-sm text-muted mt-1 leading-relaxed">
-                Registration for specific chapter symposia and delegate presentations. (Note:
-                Chapter membership is always available and encouraged above).
+                Registration for chapter symposia and delegate presentations.
               </p>
             </div>
           </div>
