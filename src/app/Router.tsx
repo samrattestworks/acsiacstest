@@ -8,6 +8,8 @@ const Home = lazy(() => import('@/pages/Home'));
 const About = lazy(() => import('@/pages/About'));
 const Team = lazy(() => import('@/pages/Team'));
 const Join = lazy(() => import('@/pages/Join'));
+const Events = lazy(() => import('@/pages/Events'));
+const Register = lazy(() => import('@/pages/Register'));
 const NotFound = lazy(() => import('@/pages/NotFound').then((m) => ({ default: m.NotFound })));
 
 const RouteLoading: React.FC = () => (
@@ -57,6 +59,22 @@ export const AppRouter: React.FC = () => {
               element={
                 <Suspense fallback={<RouteLoading />}>
                   <Join />
+                </Suspense>
+              }
+            />
+            <Route
+              path="events"
+              element={
+                <Suspense fallback={<RouteLoading />}>
+                  <Events />
+                </Suspense>
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <Suspense fallback={<RouteLoading />}>
+                  <Register />
                 </Suspense>
               }
             />

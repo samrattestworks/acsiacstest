@@ -140,12 +140,14 @@ export const siteConfig: SiteConfig = {
     links: [
       { label: 'Home', href: '/' },
       { label: 'About', href: '/#about' },
+      { label: 'Events', href: '/events' },
+      { label: 'Register', href: '/register' },
       { label: 'Team', href: '/#team' },
       { label: 'Why Join', href: '/#why-join' },
     ],
     cta: {
-      label: 'Join Us',
-      href: '/join',
+      label: 'Register (Closed)',
+      href: '/register',
     },
   },
 

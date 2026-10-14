@@ -117,7 +117,9 @@ export const Navbar: React.FC = () => {
               const isActive =
                 link.href === '/'
                   ? isHome && !location.hash
-                  : isHome && location.hash === link.href.replace('/', '');
+                  : link.href.startsWith('/#')
+                    ? isHome && location.hash === link.href.replace('/', '')
+                    : location.pathname === link.href || location.pathname === `${link.href}/`;
 
               return (
                 <a
@@ -217,7 +219,9 @@ export const Navbar: React.FC = () => {
               const isActive =
                 link.href === '/'
                   ? isHome && !location.hash
-                  : isHome && location.hash === link.href.replace('/', '');
+                  : link.href.startsWith('/#')
+                    ? isHome && location.hash === link.href.replace('/', '')
+                    : location.pathname === link.href || location.pathname === `${link.href}/`;
 
               return (
                 <a

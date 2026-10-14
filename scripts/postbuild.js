@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const distDir = path.resolve('dist');
-const routes = ['about', 'team', 'join'];
+const routes = ['about', 'team', 'join', 'events', 'register'];
 
 if (fs.existsSync(distDir)) {
   const indexHtmlPath = path.join(distDir, 'index.html');
