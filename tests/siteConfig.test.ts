@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { siteConfig, ACS_ABOUT_TEXT } from '@/content/site';
+import { siteConfig, ACS_ABOUT_TEXT, ACS_EVENTS_PLACEHOLDER } from '@/content/site';
 
 describe('site.ts content and structure integrity', () => {
-  it('strictly adheres to the mandated ACS_ABOUT_TEXT constant', () => {
+  it('strictly adheres to the mandated ACS_ABOUT_TEXT and ACS_EVENTS_PLACEHOLDER constants', () => {
     expect(ACS_ABOUT_TEXT).toBe('[PASTE TEXT FROM ACS WEBSITE HERE]');
     expect(siteConfig.about.text).toBe(ACS_ABOUT_TEXT);
+    expect(ACS_EVENTS_PLACEHOLDER).toBe('[PASTE TEXT FOR LAST TWO YEARS WITH IMAGE HERE]');
   });
 
   it('contains valid SEO and meta configurations', () => {

@@ -110,6 +110,12 @@ export interface SiteConfig {
  */
 export const ACS_ABOUT_TEXT = '[PASTE TEXT FROM ACS WEBSITE HERE]';
 
+/**
+ * Mandated events visual and text placeholder constant.
+ * Kept exactly as specified: "[PASTE TEXT FOR LAST TWO YEARS WITH IMAGE HERE]"
+ */
+export const ACS_EVENTS_PLACEHOLDER = '[PASTE TEXT FOR LAST TWO YEARS WITH IMAGE HERE]';
+
 export const siteConfig: SiteConfig = {
   meta: {
     chapterName: 'ACS IACS Student Chapter',
