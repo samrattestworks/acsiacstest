@@ -15,23 +15,29 @@ export const Action: React.FC = () => {
       aria-label="Action panel"
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-        {/* Card 1: Application */}
-        <Card spotlight={true} className="flex flex-col justify-between p-5 sm:p-7 gap-5 sm:gap-6">
+        {/* Card 1: Chapter Membership (Always Available & Encouraged) */}
+        <Card
+          spotlight={true}
+          className="flex flex-col justify-between p-5 sm:p-7 gap-5 sm:gap-6 border-accent/20"
+        >
           <div className="flex flex-col gap-3.5 sm:gap-4">
             <div className="flex items-center justify-between">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
                 <FileText className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <Pill variant="accent">Cycle 2024–26</Pill>
+              <div className="flex items-center gap-1.5">
+                <Pill variant="success">Always Open</Pill>
+                <Pill variant="accent">2026</Pill>
+              </div>
             </div>
 
             <div>
               <h2 className="font-display font-bold text-lg sm:text-xl text-foreground">
-                Application
+                Chapter Membership
               </h2>
               <p className="text-xs sm:text-sm text-muted mt-1 leading-relaxed">
-                Submit candidate credentials for active student chapter standing and committee
-                eligibility.
+                Chapter membership is always available and warmly encouraged for all students,
+                researchers, and fellows. Anyone can apply to join our roster anytime.
               </p>
             </div>
           </div>
@@ -42,11 +48,11 @@ export const Action: React.FC = () => {
             className="w-full min-h-[46px]"
             iconRight={<ArrowUpRight className="w-4 h-4 ml-0.5" />}
           >
-            Apply for Chapter
+            Apply for Chapter Membership
           </Button>
         </Card>
 
-        {/* Card 2: Registration (Controlled by siteConfig.registration.open boolean) */}
+        {/* Card 2: Event Registration (Controlled by siteConfig.registration.open boolean) */}
         <Card
           spotlight={true}
           className={`flex flex-col justify-between p-5 sm:p-7 gap-5 sm:gap-6 border ${
@@ -69,21 +75,23 @@ export const Action: React.FC = () => {
                 )}
               </div>
 
-              <Pill variant={isRegistrationOpen ? 'success' : 'closed'}>
-                {isRegistrationOpen
-                  ? siteConfig.registration.statusPillOpen
-                  : siteConfig.registration.statusPillClosed}
-              </Pill>
+              <div className="flex items-center gap-1.5">
+                <Pill variant="default">Events</Pill>
+                <Pill variant={isRegistrationOpen ? 'success' : 'closed'}>
+                  {isRegistrationOpen
+                    ? siteConfig.registration.statusPillOpen
+                    : siteConfig.registration.statusPillClosed}
+                </Pill>
+              </div>
             </div>
 
             <div>
               <h2 className="font-display font-bold text-lg sm:text-xl text-foreground">
-                Registration
+                Event Registration
               </h2>
               <p className="text-xs sm:text-sm text-muted mt-1 leading-relaxed">
-                {isRegistrationOpen
-                  ? siteConfig.registration.openMessage
-                  : siteConfig.registration.closedMessage}
+                Registration for specific chapter symposia and delegate presentations. (Note:
+                Chapter membership is always available and encouraged above).
               </p>
             </div>
           </div>

@@ -207,7 +207,7 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center justify-between border-b border-border/60 pb-3">
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              Chapter Directory // 2024–2026
+              Chapter Directory // 2026
             </span>
             <span className="font-mono text-[11px] text-muted font-medium">IACS KOLKATA</span>
           </div>

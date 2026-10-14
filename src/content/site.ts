@@ -117,7 +117,7 @@ export const siteConfig: SiteConfig = {
     tagline: 'Precision in Discovery. Bonds that Endure.',
     heroDescription:
       'Official American Chemical Society student chapter at IACS, Kolkata.\nPioneering molecular research, collaborative discourse, and scientific outreach.',
-    heroSubtitle: 'Chapter Est. 2024 · IACS Kolkata',
+    heroSubtitle: 'ACS Student Chapter · IACS Kolkata',
     seo: {
       title: 'ACS IACS Student Chapter | Excellence in Molecular Sciences',
       description:
@@ -141,13 +141,13 @@ export const siteConfig: SiteConfig = {
       { label: 'Home', href: '/' },
       { label: 'About', href: '/#about' },
       { label: 'Events', href: '/events' },
-      { label: 'Register', href: '/register' },
+      { label: 'Event Registration', href: '/register' },
       { label: 'Team', href: '/#team' },
       { label: 'Why Join', href: '/#why-join' },
     ],
     cta: {
-      label: 'Register (Closed)',
-      href: '/register',
+      label: 'Join Chapter',
+      href: '/join',
     },
   },
 
@@ -167,8 +167,9 @@ export const siteConfig: SiteConfig = {
   registration: {
     open: false, // Set to true to open registrations with one boolean toggle
     closedMessage:
-      'Chapter membership and delegate registration for the current cycle are presently closed.',
-    openMessage: 'Registrations are officially open. Submit your details for chapter credentials.',
+      'Symposium and event delegate registrations are presently closed between cycles. Chapter membership is always open and encouraged.',
+    openMessage:
+      'Event registrations are officially open. Submit your details for delegate credentials.',
     statusPillClosed: 'Registrations Closed',
     statusPillOpen: 'Registrations Open',
   },
@@ -404,7 +405,7 @@ export const siteConfig: SiteConfig = {
   ],
 
   footer: {
-    copyrightText: `© 2024–${new Date().getFullYear()} ACS IACS Student Chapter. All rights reserved.`,
+    copyrightText: '© 2026 ACS IACS Student Chapter. All rights reserved.',
     creatorText: 'Made with care by @madewithcaresamratchakraborty',
     subtext:
       'Affiliated with the American Chemical Society and Indian Association for the Cultivation of Science.',

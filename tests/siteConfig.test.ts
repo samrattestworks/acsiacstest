@@ -50,7 +50,11 @@ describe('site.ts content and structure integrity', () => {
   });
 
   it('contains enduring footer copyright and creator attribution', () => {
-    expect(siteConfig.footer.copyrightText).toBeTruthy();
+    expect(siteConfig.footer.copyrightText).toBe(
+      '© 2026 ACS IACS Student Chapter. All rights reserved.'
+    );
+    expect(siteConfig.footer.copyrightText).toContain('2026');
+    expect(siteConfig.footer.copyrightText).not.toContain('2024');
     expect(siteConfig.footer.creatorText).toContain('madewithcaresamratchakraborty');
     expect(siteConfig.footer.subtext).toBeTruthy();
   });

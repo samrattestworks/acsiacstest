@@ -19,7 +19,7 @@ export const About: React.FC = () => {
         <div className="flex flex-col gap-3 text-left">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-semibold">
-              // Chapter Overview // Est. 2024 · IACS Kolkata
+              // Chapter Overview // IACS Kolkata
             </span>
           </div>
 

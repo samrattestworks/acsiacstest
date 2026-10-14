@@ -25,9 +25,9 @@ export const Register: React.FC = () => {
 
   useEffect(() => {
     updatePageSeo({
-      title: 'Registration (Closed) | ACS IACS Student Chapter',
+      title: 'Event Registration (Closed) | ACS IACS Student Chapter',
       description:
-        'Official chapter membership and delegate registration portal. Admissions for the current 2026 cycle are presently closed. Explore form fields and join the notification waitlist.',
+        'Official event and symposium registration portal for the ACS IACS Student Chapter. Delegate registration is currently closed between event cycles. Chapter membership is always available.',
       canonical: `${siteConfig.meta.seo.canonical}register`,
     });
   }, []);
@@ -42,7 +42,7 @@ export const Register: React.FC = () => {
   return (
     <div className="flex flex-col w-full pb-20 select-none">
       {/* 1. Page Header */}
-      <section className="pt-20 pb-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center flex flex-col items-center gap-4">
+      <section className="pt-20 pb-8 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center flex flex-col items-center gap-4">
         <motion.div
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: 12 }}
           animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export const Register: React.FC = () => {
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber font-mono text-xs"
         >
           <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-          <span>Status: Registrations Closed // 2026 Cycle</span>
+          <span>Status: Event Registration Closed // 2026 Cycle</span>
         </motion.div>
 
         <motion.h1
@@ -59,7 +59,7 @@ export const Register: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.08 }}
           className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-foreground tracking-tight max-w-3xl leading-tight"
         >
-          Chapter Membership Registration
+          Event Registration & Credentials
         </motion.h1>
 
         <motion.p
@@ -68,9 +68,42 @@ export const Register: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.16 }}
           className="text-base sm:text-lg text-muted max-w-2xl font-body leading-relaxed"
         >
-          Admittance portal for student delegates, research scholars, and postdocs at the Indian
-          Association for the Cultivation of Science, Kolkata.
+          Credential and delegate registration portal for academic symposia, research colloquia, and
+          guest workshops at the Indian Association for the Cultivation of Science, Kolkata.
         </motion.p>
+      </section>
+
+      {/* Prominent Chapter Membership Callout (Always Open Distinction) */}
+      <section className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full mb-6">
+        <div className="p-5 sm:p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5">
+          <div className="flex items-start sm:items-center gap-3.5">
+            <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 shrink-0">
+              <GraduationCap className="w-5 h-5" />
+            </div>
+            <div className="flex flex-col gap-0.5">
+              <h2 className="font-display font-bold text-base sm:text-lg text-foreground">
+                Looking to Join the Chapter?
+              </h2>
+              <p className="text-xs sm:text-sm text-muted leading-relaxed font-body max-w-xl">
+                This page is specifically for <strong>Event & Symposium Registration</strong>{' '}
+                (currently closed between cycles).{' '}
+                <strong>Chapter Membership is ALWAYS open and warmly encouraged</strong> for all
+                students, research scholars, and postdocs across IACS. Anyone can apply anytime!
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 self-stretch sm:self-auto shrink-0">
+            <Button
+              to="/join"
+              variant="primary"
+              size="sm"
+              className="w-full sm:w-auto text-xs py-2.5 px-4 whitespace-nowrap shadow-md shadow-accent/20"
+            >
+              Apply for Chapter Membership →
+            </Button>
+          </div>
+        </div>
       </section>
 
       {/* 2. Official Closure Announcement Banner */}
@@ -82,14 +115,14 @@ export const Register: React.FC = () => {
             </div>
             <div className="flex flex-col gap-1">
               <h2 className="font-display font-bold text-base sm:text-lg text-foreground flex items-center gap-2">
-                Admissions Presently Inactive
+                Event Registration Inactive Between Cycles
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/20 text-amber font-semibold uppercase">
                   Locked
                 </span>
               </h2>
               <p className="text-xs sm:text-sm text-muted leading-relaxed max-w-xl font-body">
-                {siteConfig.registration.closedMessage} Review the placeholder registration form
-                below to prepare your credentials for the upcoming intake window.
+                {siteConfig.registration.closedMessage} Review the placeholder event delegate form
+                below to prepare your credentials for the next upcoming symposium cycle.
               </p>
             </div>
           </div>
@@ -160,17 +193,17 @@ export const Register: React.FC = () => {
               <FileText className="w-5 h-5 text-accent" />
               <div>
                 <h3 className="font-display font-bold text-lg sm:text-xl text-foreground">
-                  Official Delegate Enrollment Form
+                  Official Event & Symposium Delegate Form
                 </h3>
                 <span className="font-mono text-xs text-muted">
-                  Form Document Ref: IACS-ACS/REG-FORM-PREVIEW // Status: Locked
+                  Form Document Ref: IACS-ACS/EVENT-REG-2026 // Status: Closed Between Events
                 </span>
               </div>
             </div>
 
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface border border-border/80 text-muted font-mono text-xs">
               <Lock className="w-3.5 h-3.5 text-amber" />
-              <span>Submissions Locked</span>
+              <span>Event Submissions Locked</span>
             </div>
           </div>
 
@@ -178,9 +211,14 @@ export const Register: React.FC = () => {
           <div className="p-3.5 rounded-xl bg-surface-hover/60 border border-border/60 flex items-start gap-2.5 text-xs font-mono text-muted">
             <Info className="w-4 h-4 text-accent shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              This form is in <strong className="text-foreground">Read-Only Preview Mode</strong>.
-              Inputs are pre-formatted with academic placeholders to guide your preparation for the
-              next open registration window.
+              This form is in <strong className="text-foreground">Read-Only Preview Mode</strong>{' '}
+              for scheduled academic events and symposia. Inputs are pre-formatted with academic
+              placeholders to guide your delegate credential preparation. (Note: Chapter membership
+              is always available year-round at{' '}
+              <a href="#/join" className="text-accent underline">
+                Join Us
+              </a>
+              ).
             </p>
           </div>
 
@@ -189,7 +227,7 @@ export const Register: React.FC = () => {
             <div className="flex flex-col gap-4">
               <span className="font-mono text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-2">
                 <User className="w-3.5 h-3.5" />
-                1. Candidate Identity & Affiliation
+                1. Delegate Identity & Affiliation
               </span>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -234,7 +272,7 @@ export const Register: React.FC = () => {
 
                 <div className="flex flex-col gap-1.5">
                   <label className="font-mono text-xs text-muted flex items-center justify-between">
-                    <span>Institute / Campus *</span>
+                    <span>Institution / Campus *</span>
                     <span className="text-[10px] text-muted/60">[Pre-filled]</span>
                   </label>
                   <input
@@ -247,30 +285,31 @@ export const Register: React.FC = () => {
               </div>
             </div>
 
-            {/* Part 2: Academic Standing */}
+            {/* Part 2: Participation Track */}
             <div className="flex flex-col gap-4">
               <span className="font-mono text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-2">
                 <GraduationCap className="w-3.5 h-3.5" />
-                2. Academic Program & Research Division
+                2. Participation Track & Format
               </span>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-xs text-muted">Academic Program / Rank *</label>
+                  <label className="font-mono text-xs text-muted">
+                    Delegate Participation Format *
+                  </label>
                   <select
                     disabled
                     className="px-3.5 py-2.5 rounded-xl bg-surface/50 border border-border/80 text-foreground font-mono text-xs cursor-not-allowed"
                   >
-                    <option>Ph.D. Research Scholar</option>
-                    <option>Integrated Master-Ph.D. (IntPhD)</option>
-                    <option>Postdoctoral Research Fellow</option>
-                    <option>BS-MS Undergraduate Candidate</option>
-                    <option>Visiting Researcher / Project Associate</option>
+                    <option>Oral Presentation Delegate (Abstract Required)</option>
+                    <option>Poster Presentation Delegate (Abstract Required)</option>
+                    <option>Attendee & Discussion Delegate</option>
+                    <option>Hands-on Workshop Participant</option>
                   </select>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-xs text-muted">Primary Research Focus *</label>
+                  <label className="font-mono text-xs text-muted">Primary Subject Track *</label>
                   <input
                     type="text"
                     disabled
@@ -280,14 +319,14 @@ export const Register: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-xs text-muted">ACS Membership Status *</label>
+                  <label className="font-mono text-xs text-muted">ACS Membership Standing *</label>
                   <select
                     disabled
                     className="px-3.5 py-2.5 rounded-xl bg-surface/50 border border-border/80 text-foreground font-mono text-xs cursor-not-allowed"
                   >
-                    <option>Applying for Chapter-Sponsored Student Membership</option>
-                    <option>Existing ACS International Member</option>
-                    <option>Other Affiliate Society Member</option>
+                    <option>ACS IACS Student Chapter Member</option>
+                    <option>ACS International Member</option>
+                    <option>Institutional Guest Scholar</option>
                   </select>
                 </div>
 
@@ -305,21 +344,21 @@ export const Register: React.FC = () => {
               </div>
             </div>
 
-            {/* Part 3: Statement & Engagement */}
+            {/* Part 3: Presentation Scope & Abstract */}
             <div className="flex flex-col gap-4">
               <span className="font-mono text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-2">
                 <Sparkles className="w-3.5 h-3.5" />
-                3. Statement of Academic Interest
+                3. Proposed Abstract & Scientific Scope
               </span>
 
               <div className="flex flex-col gap-1.5">
                 <label className="font-mono text-xs text-muted">
-                  Brief Statement / Motivation (Max 250 words) *
+                  Abstract Title & Summary (Max 250 words) *
                 </label>
                 <textarea
                   disabled
                   rows={4}
-                  placeholder="Outline your research focus, your laboratory investigations in molecular sciences, and how you plan to participate in chapter symposia, research colloquia, and outreach initiatives..."
+                  placeholder="Outline your research topic, primary experimental or computational methodology, key chemical observations, and relevance to the scheduled symposium..."
                   className="p-3.5 rounded-xl bg-surface/50 border border-border/80 text-foreground font-mono text-xs cursor-not-allowed resize-none"
                 />
               </div>
@@ -328,7 +367,7 @@ export const Register: React.FC = () => {
             {/* Part 4: Document Verification Dropzone Placeholder */}
             <div className="flex flex-col gap-2">
               <label className="font-mono text-xs text-muted">
-                Institutional ID Verification Document (PDF, Max 5MB)
+                Abstract PDF Document Upload (Max 5MB)
               </label>
               <div className="p-6 rounded-2xl border-2 border-dashed border-border/80 bg-surface/40 flex flex-col items-center justify-center gap-2 text-center">
                 <Lock className="w-6 h-6 text-muted/60" />
@@ -336,7 +375,8 @@ export const Register: React.FC = () => {
                   File Upload Inactive
                 </span>
                 <span className="font-mono text-[11px] text-muted">
-                  Document submission dropzone will activate once admittance officially opens.
+                  Document submission dropzone will activate once event registration officially
+                  opens.
                 </span>
               </div>
             </div>
@@ -345,7 +385,7 @@ export const Register: React.FC = () => {
             <div className="pt-4 border-t border-border/70 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-xs font-mono text-muted">
                 <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
-                <span>Chapter Admissions Oversight Committee · IACS Kolkata</span>
+                <span>Symposium Academic Oversight Committee · IACS Kolkata</span>
               </div>
 
               <button
@@ -354,7 +394,7 @@ export const Register: React.FC = () => {
                 className="w-full sm:w-auto px-6 py-3 rounded-xl bg-muted/20 border border-border text-muted font-display font-semibold text-sm flex items-center justify-center gap-2 cursor-not-allowed"
               >
                 <Lock className="w-4 h-4" />
-                <span>Registrations Closed — Submissions Locked</span>
+                <span>Event Registrations Closed — Submissions Locked</span>
               </button>
             </div>
           </form>
@@ -365,30 +405,32 @@ export const Register: React.FC = () => {
       <section className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full mt-14 grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="p-5 rounded-2xl bg-surface/80 border border-border flex flex-col gap-2">
           <Calendar className="w-5 h-5 text-accent" />
-          <h4 className="font-display font-bold text-base text-foreground">Intake Schedule</h4>
+          <h4 className="font-display font-bold text-base text-foreground">Event Schedule</h4>
           <p className="text-xs font-mono text-muted leading-relaxed">
-            New delegate registrations cycle once per semester. Announcements are posted across
-            chapter channels ahead of the opening date.
+            Registration windows unlock 4–6 weeks prior to each scheduled symposium. Announcements
+            are broadcasted across all official feeds.
           </p>
         </div>
 
         <div className="p-5 rounded-2xl bg-surface/80 border border-border flex flex-col gap-2">
           <GraduationCap className="w-5 h-5 text-accent" />
-          <h4 className="font-display font-bold text-base text-foreground">Eligibility</h4>
+          <h4 className="font-display font-bold text-base text-foreground">Delegate Eligibility</h4>
           <p className="text-xs font-mono text-muted leading-relaxed">
             Open to registered undergraduate, postgraduate, doctoral, and postdoctoral scholars
-            engaged in molecular research at IACS.
+            engaged in molecular research across institutes.
           </p>
         </div>
 
         <div className="p-5 rounded-2xl bg-surface/80 border border-border flex flex-col gap-2">
           <Mail className="w-5 h-5 text-accent" />
-          <h4 className="font-display font-bold text-base text-foreground">
-            Credentials Inquiries
-          </h4>
+          <h4 className="font-display font-bold text-base text-foreground">Chapter Membership</h4>
           <p className="text-xs font-mono text-muted leading-relaxed">
-            For urgent symposium delegation queries, contact the student chapter executive team at
-            the official chapter email.
+            Looking for regular chapter membership? Membership is always open and encouraged! Apply
+            anytime at{' '}
+            <a href="#/join" className="text-accent underline">
+              Join Us
+            </a>
+            .
           </p>
         </div>
       </section>
