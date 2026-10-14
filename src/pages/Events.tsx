@@ -2,35 +2,11 @@ import React, { useEffect } from 'react';
 import { updatePageSeo } from '@/lib/seo';
 import { siteConfig, ACS_EVENTS_PLACEHOLDER } from '@/content/site';
 
-const EVENTS_LIST = [
-  {
-    number: '1',
-    title: 'Ultrafast Spectroscopy of Photoredox Catalysts',
-    series: 'Distinguished Colloquium Series',
-  },
-  {
-    number: '2',
-    title: 'Quantum Chemistry in Practice: ORCA & PySCF Bootcamp',
-    series: 'Hands-on Workshop',
-  },
-  {
-    number: '3',
-    title: 'Molecules to Materials: Science Outreach Day',
-    series: 'Secondary School Outreach',
-  },
-  {
-    number: '4',
-    title: "Young Chemists' Research Colloquium: 3-Minute Thesis",
-    series: 'Doctoral Flash Talks',
-  },
-];
-
 export const Events: React.FC = () => {
   useEffect(() => {
     updatePageSeo({
       title: 'Events | ACS IACS Student Chapter',
-      description:
-        'Official academic events organized by the American Chemical Society Student Chapter at IACS Kolkata.',
+      description: 'Official events archive and announcements for the ACS IACS Student Chapter.',
       canonical: `${siteConfig.meta.seo.canonical}events`,
     });
   }, []);
@@ -48,28 +24,11 @@ export const Events: React.FC = () => {
           </p>
         </div>
 
-        {/* The 4 Events with Solid Black Bracket Placeholder */}
-        <div className="flex flex-col gap-6 w-full mt-2">
-          {EVENTS_LIST.map((event) => (
-            <div
-              key={event.number}
-              className="p-6 sm:p-8 rounded-2xl bg-surface/70 border border-border flex flex-col gap-4"
-            >
-              <div className="flex flex-col gap-1">
-                <h2 className="font-display font-bold text-lg sm:text-xl text-foreground">
-                  {event.number}. {event.title}
-                </h2>
-                <span className="font-mono text-xs text-accent font-medium">({event.series})</span>
-              </div>
-
-              {/* Solid Black Placeholder Box */}
-              <div className="w-full bg-black rounded-xl p-8 sm:p-12 flex items-center justify-center text-center border border-neutral-800">
-                <p className="font-mono text-xs sm:text-sm text-neutral-300 font-semibold tracking-wider select-text">
-                  {ACS_EVENTS_PLACEHOLDER}
-                </p>
-              </div>
-            </div>
-          ))}
+        {/* Black Container with Mandated Placeholder */}
+        <div className="w-full bg-black rounded-2xl p-10 sm:p-16 flex items-center justify-center text-center border border-neutral-800 shadow-inner mt-4">
+          <p className="font-mono text-sm sm:text-base text-neutral-300 font-semibold tracking-wider select-text">
+            {ACS_EVENTS_PLACEHOLDER}
+          </p>
         </div>
       </section>
     </div>
