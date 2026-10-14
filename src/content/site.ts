@@ -66,6 +66,7 @@ export interface SiteConfig {
   links: {
     application: string;
     registration: string;
+    symbiosisDrive?: string;
     social: SocialLinks;
   };
   registration: {
@@ -105,10 +106,10 @@ export interface SiteConfig {
 }
 
 /**
- * Exact single real text constant as mandated by the brief.
- * Kept exactly as specified: "[PASTE TEXT FROM ACS WEBSITE HERE]"
+ * Official chapter general description provided by leadership.
  */
-export const ACS_ABOUT_TEXT = '[PASTE TEXT FROM ACS WEBSITE HERE]';
+export const ACS_ABOUT_TEXT =
+  'American Chemical Society (ACS) Student Chapter at Indian Association for the Cultivation for the Science (IACS) is an International Student organization for college/university students who are interested in chemistry and related fields. It provides a platform for students to engage in scientific and educational activities, including seminars, workshops, networking events and participate in community outreach programs.';
 
 /**
  * Mandated events visual and text placeholder constant.
@@ -122,7 +123,7 @@ export const siteConfig: SiteConfig = {
     institution: 'Indian Association for the Cultivation of Science',
     tagline: 'Precision in Discovery. Bonds that Endure.',
     heroDescription:
-      'Official American Chemical Society student chapter at IACS, Kolkata.\nPioneering molecular research, collaborative discourse, and scientific outreach.',
+      'Official American Chemical Society (ACS) Student Chapter at IACS, Kolkata.\nAn international student platform for chemistry, seminars, workshops, and community outreach.',
     heroSubtitle: 'ACS Student Chapter · IACS Kolkata',
     seo: {
       title: 'ACS IACS Student Chapter | Excellence in Molecular Sciences',
@@ -158,8 +159,10 @@ export const siteConfig: SiteConfig = {
   },
 
   links: {
-    application: 'https://forms.gle/placeholder-application',
+    application: 'https://forms.gle/GwNzN3wYe1bhPccEA',
     registration: 'https://forms.gle/placeholder-registration',
+    symbiosisDrive:
+      'https://drive.google.com/drive/folders/1PeoiNEeJPVzEz5CaDxzQfqz9GqG9CQzL?usp=sharing',
     social: {
       instagram: 'https://instagram.com/placeholder_acsiacs',
       linkedin: 'https://linkedin.com/company/placeholder-acsiacs',

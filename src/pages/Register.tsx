@@ -24,9 +24,9 @@ export const Register: React.FC = () => {
 
   useEffect(() => {
     updatePageSeo({
-      title: 'Scivision 2026 Registration | ACS IACS Student Chapter',
+      title: 'Symbiosis 2026 Registration | ACS IACS Student Chapter',
       description:
-        'Official event and symposium registration portal for the ACS IACS Student Chapter. Registration for Scivision 2026 will open soon. Chapter membership is always open.',
+        'Official event and symposium registration portal for the ACS IACS Student Chapter. Registration for Symbiosis 2026 will open soon. Chapter membership is always open.',
       canonical: `${siteConfig.meta.seo.canonical}register`,
     });
   }, []);
@@ -49,7 +49,7 @@ export const Register: React.FC = () => {
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber font-mono text-xs"
         >
           <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-          <span>Status: Scivision 2026 Registration Open Soon</span>
+          <span>Status: Symbiosis 2026 Registration Opening Soon</span>
         </motion.div>
 
         <motion.h1
@@ -58,7 +58,7 @@ export const Register: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.08 }}
           className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-foreground tracking-tight max-w-3xl leading-tight"
         >
-          Scivision 2026 Registration
+          Symbiosis 2026 Registration
         </motion.h1>
 
         <motion.p
@@ -67,7 +67,7 @@ export const Register: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.16 }}
           className="text-base sm:text-lg text-muted max-w-2xl font-body leading-relaxed"
         >
-          Official delegate and participant registration portal for Scivision 2026 at the Indian
+          Official delegate and participant registration portal for Symbiosis 2026 at the Indian
           Association for the Cultivation of Science, Kolkata. Registration will open soon.
         </motion.p>
       </section>
@@ -84,7 +84,7 @@ export const Register: React.FC = () => {
                 Looking to Join the Chapter?
               </h2>
               <p className="text-xs sm:text-sm text-muted leading-relaxed font-body max-w-xl">
-                This page is specifically for <strong>Scivision 2026 Event Registration</strong>{' '}
+                This page is specifically for <strong>Symbiosis 2026 Event Registration</strong>{' '}
                 (opening soon).{' '}
                 <strong>Chapter Membership is ALWAYS open and warmly encouraged</strong> for all
                 students, research scholars, and postdocs across IACS. Anyone can apply anytime!
@@ -114,13 +114,13 @@ export const Register: React.FC = () => {
             </div>
             <div className="flex flex-col gap-1">
               <h2 className="font-display font-bold text-base sm:text-lg text-foreground flex items-center gap-2">
-                Scivision 2026 Registration
+                Symbiosis 2026 Registration
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/20 text-amber font-semibold uppercase">
                   Opening Soon
                 </span>
               </h2>
               <p className="text-xs sm:text-sm text-muted leading-relaxed max-w-xl font-body">
-                Registration for Scivision 2026 will open soon. Follow our official channels for
+                Registration for Symbiosis 2026 will open soon. Follow our official channels for
                 announcements and intake deadlines.
               </p>
             </div>
@@ -192,7 +192,7 @@ export const Register: React.FC = () => {
               <FileText className="w-5 h-5 text-accent" />
               <div>
                 <h3 className="font-display font-bold text-lg sm:text-xl text-foreground">
-                  Scivision 2026 Delegate Registration Form
+                  Symbiosis 2026 Delegate Registration Form
                 </h3>
                 <span className="font-mono text-xs text-muted">
                   Official Registration Portal · IACS Kolkata
