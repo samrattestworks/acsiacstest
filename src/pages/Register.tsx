@@ -50,7 +50,7 @@ export const Register: React.FC = () => {
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber font-mono text-xs"
         >
           <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-          <span>Status: Event Registration Closed // 2026 Cycle</span>
+          <span>Status: Scivision 2026 Registration Open Soon</span>
         </motion.div>
 
         <motion.h1
@@ -59,7 +59,7 @@ export const Register: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.08 }}
           className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-foreground tracking-tight max-w-3xl leading-tight"
         >
-          Event Registration & Credentials
+          Scivision 2026 Registration
         </motion.h1>
 
         <motion.p
@@ -68,8 +68,8 @@ export const Register: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.16 }}
           className="text-base sm:text-lg text-muted max-w-2xl font-body leading-relaxed"
         >
-          Credential and delegate registration portal for academic symposia, research colloquia, and
-          guest workshops at the Indian Association for the Cultivation of Science, Kolkata.
+          Official delegate and participant registration portal for Scivision 2026 at the Indian
+          Association for the Cultivation of Science, Kolkata. Registration will open soon.
         </motion.p>
       </section>
 
