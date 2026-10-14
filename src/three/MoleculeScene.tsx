@@ -67,15 +67,70 @@ function MolecularLattice({ count, isPaused }: { count: number; isPaused: boolea
   const maxPossibleBonds = count * 4;
   const bondPositions = useMemo(() => new Float32Array(maxPossibleBonds * 6), [maxPossibleBonds]);
 
-  // Track pointer in 3D world units
+  // Track pointer and touch in 3D world units with smooth interpolation
   const pointerWorld = useRef({ x: 0, y: 0 });
+  const currentAttractor = useRef({ x: 0, y: 0 });
+  const idleTime = useRef(0);
+  const touchState = useRef<{ active: boolean; x: number; y: number }>({
+    active: false,
+    x: 0,
+    y: 0,
+  });
 
-  useFrame((state) => {
+  // Global touch listener so touches anywhere on mobile interact with the simulation
+  useEffect(() => {
+    const handleTouch = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        if (touch) {
+          const normX = (touch.clientX / window.innerWidth) * 2 - 1;
+          const normY = -(touch.clientY / window.innerHeight) * 2 + 1;
+          touchState.current = { active: true, x: normX, y: normY };
+        }
+      }
+    };
+
+    const handleTouchEnd = () => {
+      touchState.current.active = false;
+    };
+
+    window.addEventListener('touchstart', handleTouch, { passive: true });
+    window.addEventListener('touchmove', handleTouch, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    window.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', handleTouch);
+      window.removeEventListener('touchmove', handleTouch);
+      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('touchcancel', handleTouchEnd);
+    };
+  }, []);
+
+  useFrame((state, delta) => {
     if (isPaused) return;
 
-    // Convert normalized pointer to approximate viewport coordinates
-    pointerWorld.current.x = (state.pointer.x * viewport.width) / 2;
-    pointerWorld.current.y = (state.pointer.y * viewport.height) / 2;
+    idleTime.current += delta;
+
+    let targetNormX = state.pointer.x;
+    let targetNormY = state.pointer.y;
+
+    if (touchState.current.active) {
+      targetNormX = touchState.current.x;
+      targetNormY = touchState.current.y;
+    } else if (Math.abs(state.pointer.x) < 0.001 && Math.abs(state.pointer.y) < 0.001) {
+      // Autonomous organic drift when idle on touch devices
+      targetNormX = Math.sin(idleTime.current * 0.8) * 0.45;
+      targetNormY = Math.cos(idleTime.current * 0.6) * 0.35;
+    }
+
+    const targetWorldX = (targetNormX * viewport.width) / 2;
+    const targetWorldY = (targetNormY * viewport.height) / 2;
+
+    // Smooth spring lerp for force field attractor
+    currentAttractor.current.x += (targetWorldX - currentAttractor.current.x) * 0.12;
+    currentAttractor.current.y += (targetWorldY - currentAttractor.current.y) * 0.12;
+    pointerWorld.current = currentAttractor.current;
 
     const scrollY = window.scrollY || 0;
     const scrollFactor = Math.min(scrollY / 600, 1.5);
@@ -99,12 +154,14 @@ function MolecularLattice({ count, isPaused }: { count: number; isPaused: boolea
       if (Math.abs(mol.pos.y) > 5) mol.vel.y *= -1;
       if (Math.abs(mol.pos.z) > 4) mol.vel.z *= -1;
 
-      // Pointer interactive attraction
+      // Touch and pointer interactive attraction with enhanced responsiveness
+      const attractionForce = touchState.current.active ? 0.045 : 0.024;
+      const attractionRadius = touchState.current.active ? 6.5 : 4.8;
       const attraction = calculatePointerAttraction(
         { x: mol.pos.x, y: mol.pos.y, z: mol.pos.z },
         pointerWorld.current,
-        4.5,
-        0.02
+        attractionRadius,
+        attractionForce
       );
       mol.pos.x += attraction.x;
       mol.pos.y += attraction.y;
@@ -185,6 +242,12 @@ function MolecularLattice({ count, isPaused }: { count: number; isPaused: boolea
       <ambientLight intensity={1.2} />
       <directionalLight position={[10, 10, 10]} intensity={1.5} color="#00D2FF" />
       <pointLight position={[-10, -5, -5]} intensity={1.2} color="#2563EB" />
+      <pointLight
+        position={[pointerWorld.current.x, pointerWorld.current.y, 2.5]}
+        intensity={touchState.current.active ? 3.0 : 1.8}
+        color="#38BDF8"
+        distance={7}
+      />
 
       {/* Instanced Central Oxygen Atoms */}
       <instancedMesh ref={oxygenInstancedRef} args={[undefined, undefined, count]}>

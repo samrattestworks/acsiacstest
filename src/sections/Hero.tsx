@@ -94,13 +94,13 @@ export const Hero: React.FC = () => {
           {/* 2 CTAs: Join Us & Learn More */}
           <motion.div
             variants={prefersReducedMotion ? undefined : itemVariants}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-3 sm:pt-4 w-full sm:w-auto px-4 sm:px-0"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-3 w-full sm:w-auto px-4 sm:px-0"
           >
             <Button
               to="/join"
               variant="primary"
               size="lg"
-              className="w-full sm:w-auto min-h-[48px]"
+              className="w-full sm:w-auto min-h-[48px] shadow-lg shadow-primary/25"
               iconRight={<ArrowUpRight className="w-5 h-5 ml-1" />}
             >
               Join Us
@@ -117,6 +117,15 @@ export const Hero: React.FC = () => {
             >
               Learn More
             </Button>
+          </motion.div>
+
+          {/* Interactive Molecular Field Cue */}
+          <motion.div
+            variants={prefersReducedMotion ? undefined : itemVariants}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface/60 border border-border/60 text-muted/80 text-[11px] font-mono shadow-xs backdrop-blur-sm"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+            <span>Interactive field · Touch or drag to attract molecules</span>
           </motion.div>
         </motion.div>
 

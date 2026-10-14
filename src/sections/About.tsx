@@ -65,18 +65,18 @@ export const About: React.FC = () => {
                     delay: i * 0.08,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="flex flex-col p-2.5 sm:p-3 rounded-xl bg-surface border border-border hover:border-accent/40 transition-colors shadow-xs group"
+                  className="flex flex-col p-3 rounded-xl bg-surface/80 border border-border hover:border-accent/50 hover:shadow-[0_0_20px_rgba(0,210,255,0.15)] transition-all shadow-xs group relative overflow-hidden"
                 >
                   <div className="flex items-center justify-between text-muted font-mono text-[9px] sm:text-[10px]">
-                    <span>{elem.number}</span>
+                    <span className="font-bold text-accent">{elem.number}</span>
                     <span>{elem.mass}</span>
                   </div>
-                  <span className="font-display font-black text-xl sm:text-2xl text-accent group-hover:text-amber transition-colors mt-0.5 sm:mt-1">
+                  <span className="font-display font-black text-2xl sm:text-3xl text-foreground group-hover:text-accent transition-colors mt-1">
                     {elem.symbol}
                   </span>
-                  <span className="font-mono text-[11px] sm:text-xs text-foreground/80 mt-0.5">
-                    {elem.name}
-                  </span>
+                  <div className="flex items-center justify-between mt-1 pt-1 border-t border-border/40 text-[10px] font-mono text-muted">
+                    <span className="truncate">{elem.name}</span>
+                  </div>
                 </motion.div>
               ))}
             </div>
