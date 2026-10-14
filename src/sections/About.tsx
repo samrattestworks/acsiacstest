@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { siteConfig } from '@/content/site';
-import { Img } from '@/components/ui/Img';
+import { HeritageSignage } from '@/components/ui/HeritageSignage';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
@@ -83,27 +83,14 @@ export const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Image Placeholder with Parallax */}
-        <div className="lg:col-span-5 relative mt-4 lg:mt-0">
+        {/* Right Column: Architectural Laboratory Heritage Signage Plaque */}
+        <div className="lg:col-span-5 relative mt-6 lg:mt-0 flex items-center justify-center">
           <motion.div
             style={{ y: prefersReducedMotion || !isDesktop ? 0 : parallaxY }}
-            className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-border bg-surface p-2 shadow-card max-w-md mx-auto lg:max-w-none"
+            className="w-full"
           >
-            {/* Aspect-Ratio Box with Zero Layout Shift */}
-            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-tr from-surface via-surface-hover to-primary/20 flex flex-col items-center justify-center p-6 text-center select-none">
-              <Img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' fill='none'%3E%3Crect width='400' height='500' fill='%230A1329'/%3E%3Cpath d='M200 120 L300 180 L300 300 L200 360 L100 300 L100 180 Z' stroke='%2300D2FF' stroke-width='2' stroke-dasharray='4 4' fill='none' opacity='0.4'/%3E%3Ccircle cx='200' cy='240' r='50' fill='%232563EB' fill-opacity='0.2' stroke='%2300D2FF' stroke-width='1.5'/%3E%3Ctext x='200' y='245' font-family='sans-serif' font-size='16' font-weight='bold' fill='%23F1F5F9' text-anchor='middle'%3EIACS HERITAGE LABS%3C/text%3E%3Ctext x='200' y='270' font-family='monospace' font-size='12' fill='%2394A3B8' text-anchor='middle'%3EKolkata, India%3C/text%3E%3C/svg%3E"
-                alt="IACS Department of Chemical Sciences Laboratory"
-                width={400}
-                height={500}
-                className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
-              />
-            </div>
+            <HeritageSignage />
           </motion.div>
-
-          <p className="font-mono text-[11px] sm:text-xs text-muted/80 text-center mt-3 px-2">
-            {siteConfig.about.imageCaption}
-          </p>
         </div>
       </div>
     </section>
