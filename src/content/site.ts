@@ -160,7 +160,7 @@ export const siteConfig: SiteConfig = {
 
   links: {
     application: 'https://forms.gle/GwNzN3wYe1bhPccEA',
-    registration: 'https://forms.gle/placeholder-registration',
+    registration: 'https://forms.gle/GwNzN3wYe1bhPccEA',
     symbiosisDrive:
       'https://drive.google.com/drive/folders/1PeoiNEeJPVzEz5CaDxzQfqz9GqG9CQzL?usp=sharing',
     social: {

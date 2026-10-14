@@ -11,6 +11,7 @@ import {
   Sparkles,
   Calendar,
   ShieldCheck,
+  ArrowUpRight,
 } from 'lucide-react';
 import { siteConfig } from '@/content/site';
 import { updatePageSeo } from '@/lib/seo';
@@ -126,7 +127,16 @@ export const Register: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 self-stretch md:self-auto shrink-0">
+          <div className="flex flex-wrap items-center gap-2 self-stretch md:self-auto shrink-0">
+            <Button
+              href={siteConfig.links.registration}
+              variant="primary"
+              size="sm"
+              className="w-full md:w-auto text-xs py-2 px-3.5"
+              iconRight={<ArrowUpRight className="w-4 h-4 ml-0.5" />}
+            >
+              Open Registration Form
+            </Button>
             <Button
               to="/events"
               variant="outline"
