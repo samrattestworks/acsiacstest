@@ -48,12 +48,17 @@ export const About: React.FC = () => {
             </p>
           </div>
 
-          {/* Decorative Periodic Table Tile Motif Animating In */}
+          {/* Chapter Elemental Signature · I · Ac · C · S */}
           <div className="pt-2 sm:pt-4 flex flex-col gap-3">
-            <span className="font-mono text-[11px] sm:text-xs uppercase text-muted tracking-wider">
-              Fundamental Elements
-            </span>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-wider text-accent font-semibold">
+                // Chapter Elemental Signature · I · Ac · C · S
+              </span>
+              <span className="font-mono text-[10px] text-muted hidden sm:inline">
+                Periodic Identity
+              </span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5">
               {siteConfig.about.periodicElements.map((elem, i) => (
                 <motion.div
                   key={elem.symbol}
@@ -65,17 +70,23 @@ export const About: React.FC = () => {
                     delay: i * 0.08,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="flex flex-col p-3 rounded-xl bg-surface/80 border border-border hover:border-accent/50 hover:shadow-[0_0_20px_rgba(0,210,255,0.15)] transition-all shadow-xs group relative overflow-hidden"
+                  className="flex flex-col p-3.5 rounded-xl bg-surface/90 border border-border/80 hover:border-accent/60 hover:shadow-[0_4px_20px_rgba(180,83,9,0.12)] transition-all shadow-xs group relative overflow-hidden"
                 >
                   <div className="flex items-center justify-between text-muted font-mono text-[9px] sm:text-[10px]">
                     <span className="font-bold text-accent">{elem.number}</span>
-                    <span>{elem.mass}</span>
+                    <span className="text-muted/80">{elem.mass}</span>
                   </div>
-                  <span className="font-display font-black text-2xl sm:text-3xl text-foreground group-hover:text-accent transition-colors mt-1">
+                  <span className="font-display font-black text-2xl sm:text-3xl text-foreground group-hover:text-accent transition-colors my-1">
                     {elem.symbol}
                   </span>
-                  <div className="flex items-center justify-between mt-1 pt-1 border-t border-border/40 text-[10px] font-mono text-muted">
-                    <span className="truncate">{elem.name}</span>
+                  <div className="flex flex-col gap-1.5 pt-1.5 border-t border-border/50 text-[10px] font-mono">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-foreground/90 truncate">{elem.name}</span>
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-accent/10 border border-accent/20 text-accent">
+                        State: {elem.state}
+                      </span>
+                    </div>
+                    <span className="text-[9px] text-muted truncate">{elem.category}</span>
                   </div>
                 </motion.div>
               ))}

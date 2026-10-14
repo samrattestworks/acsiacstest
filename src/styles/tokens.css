@@ -1,33 +1,37 @@
 :root {
-  /* Light Theme (Accessible WCAG 2.2 AA) */
-  --bg: #f8fafc;
+  /* Warm Elegant Light Theme (Academic Archival Ivory & Warm Amber) */
+  --bg: #fbf9f5;
   --surface: #ffffff;
-  --surface-hover: #f1f5f9;
-  --surface-glass: rgba(255, 255, 255, 0.78);
-  --border: rgba(15, 23, 42, 0.12);
-  --border-subtle: rgba(15, 23, 42, 0.06);
-  --border-glow: rgba(2, 132, 199, 0.25);
+  --surface-hover: #f6f1ea;
+  --surface-glass: rgba(251, 249, 245, 0.88);
+  --border: rgba(90, 70, 50, 0.12);
+  --border-subtle: rgba(90, 70, 50, 0.06);
+  --border-glow: rgba(180, 83, 9, 0.22);
 
-  --text: #0f172a;
-  --text-muted: #475569;
+  --text: #1c1917;
+  --text-muted: #6b6258;
   --text-inverse: #ffffff;
 
-  --primary: #1d4ed8;
-  --primary-hover: #1e40af;
+  --primary: #0f3b66;
+  --primary-hover: #0a2947;
   --primary-foreground: #ffffff;
 
-  --accent: #0284c7;
-  --accent-glow: rgba(2, 132, 199, 0.18);
+  --accent: #b45309;
+  --accent-glow: rgba(180, 83, 9, 0.16);
   --accent-foreground: #ffffff;
 
   --amber: #d97706;
-  --success: #059669;
-  --warning: #d97706;
-  --destructive: #dc2626;
+  --success: #15803d;
+  --warning: #b45309;
+  --destructive: #b91c1c;
 
-  --grain-opacity: 0.02;
+  --grain-opacity: 0.025;
   --mesh-opacity: 0.55;
-  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --mesh-bg:
+    radial-gradient(circle at 18% 25%, rgba(217, 119, 6, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 82% 15%, rgba(180, 83, 9, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(15, 59, 102, 0.04) 0%, transparent 40%);
+  --shadow-card: 0 8px 26px -3px rgba(78, 59, 42, 0.06), 0 2px 5px -1px rgba(78, 59, 42, 0.03);
 }
 
 .dark,
@@ -60,6 +64,10 @@
 
   --grain-opacity: 0.035;
   --mesh-opacity: 0.7;
+  --mesh-bg:
+    radial-gradient(circle at 18% 25%, rgba(0, 210, 255, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 82% 15%, rgba(37, 99, 235, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.04) 0%, transparent 40%);
   --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(56, 189, 248, 0.1);
 }
 

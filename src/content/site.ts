@@ -90,6 +90,9 @@ export interface SiteConfig {
       number: number;
       name: string;
       mass: string;
+      state: 'Solid' | 'Liquid' | 'Gas' | 'Synthetic';
+      category: string;
+      electronConfig?: string;
     }>;
   };
   whyJoin: WhyJoinCard[];
@@ -173,12 +176,44 @@ export const siteConfig: SiteConfig = {
     title: 'About the Chapter',
     subtitle: 'Bridging fundamental chemistry with transformative collaborative research',
     text: ACS_ABOUT_TEXT,
-    imageCaption: 'Department of Chemical Sciences & Heritage Laboratories, IACS Kolkata',
+    imageCaption: 'ACS Student Chapter · IACS Kolkata',
     periodicElements: [
-      { symbol: 'C', number: 6, name: 'Carbon', mass: '12.011' },
-      { symbol: 'N', number: 7, name: 'Nitrogen', mass: '14.007' },
-      { symbol: 'O', number: 8, name: 'Oxygen', mass: '15.999' },
-      { symbol: 'Pt', number: 78, name: 'Platinum', mass: '195.084' },
+      {
+        symbol: 'I',
+        number: 53,
+        name: 'Iodine',
+        mass: '126.904',
+        state: 'Solid',
+        category: 'Halogen',
+        electronConfig: '[Kr] 4d¹⁰ 5s² 5p⁵',
+      },
+      {
+        symbol: 'Ac',
+        number: 89,
+        name: 'Actinium',
+        mass: '227.028',
+        state: 'Solid',
+        category: 'Actinide',
+        electronConfig: '[Rn] 6d¹ 7s²',
+      },
+      {
+        symbol: 'C',
+        number: 6,
+        name: 'Carbon',
+        mass: '12.011',
+        state: 'Solid',
+        category: 'Reactive Nonmetal',
+        electronConfig: '[He] 2s² 2p²',
+      },
+      {
+        symbol: 'S',
+        number: 16,
+        name: 'Sulfur',
+        mass: '32.065',
+        state: 'Solid',
+        category: 'Chalcogen',
+        electronConfig: '[Ne] 3s² 3p⁴',
+      },
     ],
   },
 

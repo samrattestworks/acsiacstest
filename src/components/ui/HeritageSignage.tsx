@@ -22,7 +22,7 @@ export const HeritageSignage: React.FC = () => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       className="relative w-full max-w-lg mx-auto select-none group"
-      aria-label="Department of Chemical Sciences and Heritage Laboratories architectural signage plaque"
+      aria-label="ACS Student Chapter IACS Kolkata architectural signage plaque"
     >
       {/* Ambient Signage Backlight Glow */}
       <div
@@ -99,9 +99,9 @@ export const HeritageSignage: React.FC = () => {
             </div>
 
             <h3 className="font-display font-extrabold text-xl sm:text-2xl lg:text-3xl tracking-tight text-foreground leading-snug text-balance">
-              Department of Chemical Sciences <br className="hidden sm:inline" />
+              ACS Student Chapter <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-accent via-sky-300 to-amber bg-clip-text text-transparent">
-                & Heritage Laboratories
+                IACS Kolkata
               </span>
             </h3>
 
@@ -119,7 +119,7 @@ export const HeritageSignage: React.FC = () => {
             </div>
             <div className="p-2.5 rounded-lg bg-surface/90 border border-border/80 flex items-center gap-2 text-muted">
               <Sparkles className="w-3.5 h-3.5 text-amber shrink-0" />
-              <span className="truncate">Centenary Labs · Wing A</span>
+              <span className="truncate">Chapter Labs · Wing A</span>
             </div>
           </div>
 
@@ -127,7 +127,7 @@ export const HeritageSignage: React.FC = () => {
           <div className="pt-3 border-t border-border/70 flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] font-mono text-muted/70 relative z-10">
             <span className="uppercase tracking-wider">
               Registry:{' '}
-              <strong className="text-foreground/90 font-semibold">IACS/CHEM-HERITAGE/1876</strong>
+              <strong className="text-foreground/90 font-semibold">ACS-IACS/ESTD-2024</strong>
             </span>
             <span className="text-accent/90 font-medium">ACS Student Chapter Archive</span>
           </div>

@@ -17,7 +17,15 @@ interface MoleculeState {
   basePos: THREE.Vector3;
 }
 
-function MolecularLattice({ count, isPaused }: { count: number; isPaused: boolean }) {
+function MolecularLattice({
+  count,
+  isPaused,
+  isDark,
+}: {
+  count: number;
+  isPaused: boolean;
+  isDark: boolean;
+}) {
   const { viewport } = useThree();
 
   const oxygenInstancedRef = useRef<THREE.InstancedMesh>(null!);
@@ -239,13 +247,21 @@ function MolecularLattice({ count, isPaused }: { count: number; isPaused: boolea
 
   return (
     <>
-      <ambientLight intensity={1.2} />
-      <directionalLight position={[10, 10, 10]} intensity={1.5} color="#00D2FF" />
-      <pointLight position={[-10, -5, -5]} intensity={1.2} color="#2563EB" />
+      <ambientLight intensity={isDark ? 1.2 : 1.5} />
+      <directionalLight
+        position={[10, 10, 10]}
+        intensity={isDark ? 1.5 : 1.6}
+        color={isDark ? '#00D2FF' : '#B45309'}
+      />
+      <pointLight
+        position={[-10, -5, -5]}
+        intensity={isDark ? 1.2 : 1.4}
+        color={isDark ? '#2563EB' : '#0F3B66'}
+      />
       <pointLight
         position={[pointerWorld.current.x, pointerWorld.current.y, 2.5]}
-        intensity={touchState.current.active ? 3.0 : 1.8}
-        color="#38BDF8"
+        intensity={touchState.current.active ? (isDark ? 3.0 : 3.2) : isDark ? 1.8 : 2.0}
+        color={isDark ? '#38BDF8' : '#D97706'}
         distance={7}
       />
 
@@ -253,11 +269,11 @@ function MolecularLattice({ count, isPaused }: { count: number; isPaused: boolea
       <instancedMesh ref={oxygenInstancedRef} args={[undefined, undefined, count]}>
         <sphereGeometry args={[0.34, 16, 16]} />
         <meshStandardMaterial
-          color="#00D2FF"
-          emissive="#0047AB"
-          emissiveIntensity={0.6}
-          roughness={0.15}
-          metalness={0.6}
+          color={isDark ? '#00D2FF' : '#0F3B66'}
+          emissive={isDark ? '#0047AB' : '#0A2540'}
+          emissiveIntensity={isDark ? 0.6 : 0.35}
+          roughness={isDark ? 0.15 : 0.2}
+          metalness={isDark ? 0.6 : 0.4}
         />
       </instancedMesh>
 
@@ -265,15 +281,15 @@ function MolecularLattice({ count, isPaused }: { count: number; isPaused: boolea
       <instancedMesh ref={hydrogenInstancedRef} args={[undefined, undefined, count * 2]}>
         <sphereGeometry args={[0.18, 12, 12]} />
         <meshStandardMaterial
-          color="#F8FAFC"
-          emissive="#38BDF8"
-          emissiveIntensity={0.3}
+          color={isDark ? '#F8FAFC' : '#B45309'}
+          emissive={isDark ? '#38BDF8' : '#D97706'}
+          emissiveIntensity={isDark ? 0.3 : 0.25}
           roughness={0.2}
           metalness={0.4}
         />
       </instancedMesh>
 
-      {/* Dynamic Hydrogen Bonds (Dashed / Translucent additive lines) */}
+      {/* Dynamic Hydrogen Bonds (Dashed / Translucent lines) */}
       <lineSegments>
         <bufferGeometry ref={bondsGeometryRef}>
           <bufferAttribute
@@ -284,12 +300,12 @@ function MolecularLattice({ count, isPaused }: { count: number; isPaused: boolea
           />
         </bufferGeometry>
         <lineDashedMaterial
-          color="#38BDF8"
+          color={isDark ? '#38BDF8' : '#B45309'}
           transparent
-          opacity={0.45}
+          opacity={isDark ? 0.45 : 0.4}
           dashSize={0.2}
           gapSize={0.15}
-          blending={THREE.AdditiveBlending}
+          blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
           depthWrite={false}
         />
       </lineSegments>
@@ -301,6 +317,22 @@ export const MoleculeScene: React.FC = () => {
   const { particleCount, maxDpr } = useDeviceTier();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [isDark, setIsDark] = useState(() =>
+    typeof document !== 'undefined' ? document.documentElement.classList.contains('dark') : false
+  );
+
+  useEffect(() => {
+    const updateTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+    updateTheme();
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class', 'data-theme'],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleVisibility = () => {
@@ -344,7 +376,7 @@ export const MoleculeScene: React.FC = () => {
           powerPreference: 'high-performance',
         }}
       >
-        <MolecularLattice count={particleCount} isPaused={isPaused} />
+        <MolecularLattice count={particleCount} isPaused={isPaused} isDark={isDark} />
       </Canvas>
     </div>
   );

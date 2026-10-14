@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="light" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
-    <meta name="theme-color" content="#050B1A" />
+    <meta name="theme-color" content="#FBF9F5" />
 
     <title>ACS IACS Student Chapter | Excellence in Molecular Sciences</title>
     <meta
@@ -54,16 +54,12 @@
       (function () {
         try {
           var stored = localStorage.getItem('acs_theme');
-          var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (stored === 'light') {
+          if (stored === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
             document.documentElement.classList.remove('dark');
             document.documentElement.setAttribute('data-theme', 'light');
-          } else if (stored === 'dark' || (!stored && supportDarkMode)) {
-            document.documentElement.classList.add('dark');
-            document.documentElement.setAttribute('data-theme', 'dark');
-          } else if (!stored) {
-            document.documentElement.classList.add('dark');
-            document.documentElement.setAttribute('data-theme', 'dark');
           }
         } catch (e) {}
       })();
