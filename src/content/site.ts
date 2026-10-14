@@ -66,7 +66,6 @@ export interface SiteConfig {
   links: {
     application: string;
     registration: string;
-    symbiosisDrive?: string;
     social: SocialLinks;
   };
   registration: {
@@ -161,8 +160,6 @@ export const siteConfig: SiteConfig = {
   links: {
     application: 'https://forms.gle/GwNzN3wYe1bhPccEA',
     registration: 'https://forms.gle/GwNzN3wYe1bhPccEA',
-    symbiosisDrive:
-      'https://drive.google.com/drive/folders/1PeoiNEeJPVzEz5CaDxzQfqz9GqG9CQzL?usp=sharing',
     social: {
       instagram: 'https://instagram.com/placeholder_acsiacs',
       linkedin: 'https://linkedin.com/company/placeholder-acsiacs',

@@ -3,7 +3,6 @@ import {
   Calendar,
   Image as ImageIcon,
   ArrowUpRight,
-  ExternalLink,
   X,
   ChevronLeft,
   ChevronRight,
@@ -89,7 +88,6 @@ interface ChapterEvent {
   isUpcoming?: boolean;
   description: string;
   hasGallery?: boolean;
-  driveLink?: string;
 }
 
 const EVENTS_LIST: ChapterEvent[] = [
@@ -101,8 +99,6 @@ const EVENTS_LIST: ChapterEvent[] = [
     status: 'Done',
     description:
       'The premier annual chemistry symposium organized by the ACS IACS Student Chapter. Brought together faculty members, graduate scholars, and undergraduate researchers for oral presentations, technical discussions, and academic exchange.',
-    driveLink:
-      'https://drive.google.com/drive/folders/1PeoiNEeJPVzEz5CaDxzQfqz9GqG9CQzL?usp=sharing',
   },
   {
     id: 'scivision-2025',
@@ -113,8 +109,6 @@ const EVENTS_LIST: ChapterEvent[] = [
     hasGallery: true,
     description:
       'Flagship annual scientific conference held on 15 February 2025 at IACS Kolkata. Featured distinguished keynote lectures—including reticular chemistry and porous covalent organic frameworks (COFs) by Prof. Rahul Banerjee (IISER Kolkata)—technical poster sessions, and vibrant inter-institutional student participation.',
-    driveLink:
-      'https://drive.google.com/drive/folders/1PeoiNEeJPVzEz5CaDxzQfqz9GqG9CQzL?usp=sharing',
   },
   {
     id: 'symbiosis-2026',
@@ -276,17 +270,9 @@ export const Events: React.FC = () => {
                         Symposium Visual Archive ({SCIVISION_2025_PHOTOS.length} Photographs)
                       </span>
                     </div>
-                    {event.driveLink && (
-                      <a
-                        href={event.driveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:underline"
-                      >
-                        <span>Open Drive Folder</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    )}
+                    <span className="font-mono text-xs text-muted">
+                      Click any photograph to view full-resolution
+                    </span>
                   </div>
 
                   {/* Responsive Grid with Featured Lead Shot */}
@@ -370,34 +356,38 @@ export const Events: React.FC = () => {
                   })()}
                 </div>
               ) : (
-                /* Symbiosis 2025: Concluded Event with Drive Archive Callout */
-                <div className="p-6 rounded-xl bg-surface border border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="flex items-center gap-3.5">
-                    <div className="p-2.5 rounded-lg bg-surface-hover text-accent shrink-0">
-                      <ImageIcon className="w-5 h-5" />
+                /* Symbiosis 2025: Concluded Event Highlights */
+                <div className="p-6 rounded-xl bg-surface border border-border flex flex-col gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/50 pb-3">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                      <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">
+                        Symposium Proceedings Concluded
+                      </span>
                     </div>
-                    <div className="flex flex-col gap-0.5 text-left">
-                      <p className="font-display font-bold text-sm sm:text-base text-foreground">
-                        Symbiosis 2025 Archive
-                      </p>
-                      <p className="text-xs text-muted">
-                        Symposium session records and photographs are hosted on the chapter Google
-                        Drive repository.
-                      </p>
-                    </div>
+                    <span className="font-mono text-xs text-muted">
+                      Annual Research Exchange & Oral Sessions
+                    </span>
                   </div>
 
-                  {event.driveLink && (
-                    <a
-                      href={event.driveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-surface-hover border border-border text-foreground hover:border-accent hover:text-accent font-mono text-xs transition-colors shrink-0"
-                    >
-                      <span>Access Drive Folder</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  )}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    {[
+                      { title: 'Oral Research Talks', label: 'Faculty & Scholars' },
+                      { title: 'Technical Sessions', label: 'Molecular Sciences' },
+                      { title: 'Poster Symposium', label: 'Student Exchange' },
+                      { title: 'Networking Forum', label: 'Chapter Collaboration' },
+                    ].map((track) => (
+                      <div
+                        key={track.title}
+                        className="p-3 rounded-lg bg-surface-hover border border-border/70 flex flex-col gap-1 text-left"
+                      >
+                        <span className="font-display font-semibold text-xs text-foreground">
+                          {track.title}
+                        </span>
+                        <span className="font-mono text-[10px] text-muted">{track.label}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -434,15 +424,6 @@ export const Events: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <a
-                  href={siteConfig.links.symbiosisDrive}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-700 text-xs font-mono text-neutral-200 hover:text-white hover:border-neutral-500 transition-colors"
-                >
-                  <span>Full Drive Archive</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(null)}
