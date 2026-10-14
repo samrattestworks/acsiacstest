@@ -27,4 +27,5 @@ test-results/
 *.njsproj
 *.sln
 *.sw?
+*.pdf
 .system_generated/
