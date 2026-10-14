@@ -84,7 +84,6 @@ export interface SiteConfig {
     title: string;
     subtitle: string;
     text: string;
-    imageCaption: string;
     periodicElements: Array<{
       symbol: string;
       number: number;
@@ -176,7 +175,6 @@ export const siteConfig: SiteConfig = {
     title: 'About the Chapter',
     subtitle: 'Bridging fundamental chemistry with transformative collaborative research',
     text: ACS_ABOUT_TEXT,
-    imageCaption: 'ACS Student Chapter · IACS Kolkata',
     periodicElements: [
       {
         symbol: 'I',

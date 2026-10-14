@@ -16,7 +16,7 @@ export const About: React.FC = () => {
     updatePageSeo({
       title: 'About the Chapter | ACS IACS Student Chapter',
       description:
-        'Explore the heritage, charter, and mission of the American Chemical Society student chapter at the Indian Association for the Cultivation of Science (IACS), Kolkata.',
+        'Explore the charter, scientific mission, and research frontiers of the American Chemical Society student chapter at the Indian Association for the Cultivation of Science (IACS), Kolkata.',
       canonical: `${siteConfig.meta.seo.canonical}about`,
     });
   }, []);
@@ -24,7 +24,7 @@ export const About: React.FC = () => {
   const milestones = [
     {
       year: '1876',
-      title: 'Heritage Inception',
+      title: 'Historic Inception',
       description:
         'Dr. Mahendralal Sircar establishes IACS, inaugurating modern scientific investigation and physical research in India.',
       icon: BookOpen,
@@ -63,7 +63,7 @@ export const About: React.FC = () => {
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-xs"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          <span>Charter & Scientific Heritage</span>
+          <span>Charter & Scientific Mission</span>
         </motion.div>
 
         <motion.h1
@@ -83,8 +83,8 @@ export const About: React.FC = () => {
           className="text-base sm:text-lg text-muted max-w-2xl font-body leading-relaxed"
         >
           The official American Chemical Society student chapter at the Indian Association for the
-          Cultivation of Science (IACS), Kolkata. Advancing fundamental chemical sciences,
-          collaborative discovery, and student mentorship.
+          Cultivation of Science (IACS), Kolkata. Advancing fundamental chemistry, collaborative
+          discovery, and student mentorship.
         </motion.p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
@@ -105,7 +105,7 @@ export const About: React.FC = () => {
       {/* 2. Core Chapter Overview Section */}
       <AboutSection />
 
-      {/* 3. Heritage & Milestones Timeline */}
+      {/* 3. Historic Milestones Timeline */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full select-none">
         <div className="flex flex-col items-center text-center gap-3 mb-12">
           <span className="font-mono text-xs uppercase tracking-widest text-accent font-semibold">

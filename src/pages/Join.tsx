@@ -30,8 +30,8 @@ export const Join: React.FC = () => {
         </h1>
 
         <p className="text-base sm:text-lg text-muted max-w-xl font-body leading-relaxed">
-          Shape the future of chemical sciences and molecular discovery at the Indian Association
-          for the Cultivation of Science.
+          Shape the future of chemistry and molecular discovery at the Indian Association for the
+          Cultivation of Science.
         </p>
       </section>
 

@@ -3,6 +3,8 @@ import {
   calculateDistance,
   computeHydrogenBonds,
   calculatePointerAttraction,
+  calculateStericRepulsion,
+  calculateVortexForce,
   getWaterGeometryOffsets,
 } from '@/three/bondLogic';
 
@@ -53,5 +55,30 @@ describe('bondLogic unit tests', () => {
 
     const outsideForce = calculatePointerAttraction(pos, { x: 10, y: 10 }, 5, 1.0);
     expect(outsideForce).toEqual({ x: 0, y: 0, z: 0 });
+
+    // Inside core radius (e.g. dist = 0.5 < minCoreRadius = 1.0): pushes AWAY (anti-coagulation)
+    const corePos = { x: 1.5, y: 0, z: 0 };
+    const closePointer = { x: 2.0, y: 0 }; // dist = 0.5
+    const repulseForce = calculatePointerAttraction(corePos, closePointer, 5, 1.0, 1.0);
+    expect(repulseForce.x).toBeLessThan(0); // Pushes away from pointer
+  });
+
+  it('calculates intermolecular steric repulsion preventing molecular coagulation', () => {
+    const a = { x: 1.0, y: 0, z: 0 };
+    const b = { x: 1.5, y: 0, z: 0 }; // distance = 0.5 < minDistance = 1.6
+    const repulsion = calculateStericRepulsion(a, b, 1.6, 0.1);
+    expect(repulsion.x).toBeLessThan(0); // A pushed left away from B
+
+    // Distant molecules experience 0 steric repulsion
+    const distant = calculateStericRepulsion(a, { x: 10, y: 0, z: 0 }, 1.6, 0.1);
+    expect(distant).toEqual({ x: 0, y: 0, z: 0 });
+  });
+
+  it('calculates hydrodynamic vortex swirl circulation', () => {
+    const pos = { x: 2, y: 0, z: 0 };
+    const center = { x: 0, y: 0 };
+    const vortex = calculateVortexForce(pos, center, 5, 0.05);
+    // At (2, 0) relative to (0, 0), dx = 2, dy = 0. Tangential velocity (-dy, dx) has positive y!
+    expect(vortex.y).toBeGreaterThan(0);
   });
 });

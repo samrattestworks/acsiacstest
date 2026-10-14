@@ -5,6 +5,8 @@ import { useDeviceTier } from './useDeviceTier';
 import {
   computeHydrogenBonds,
   calculatePointerAttraction,
+  calculateStericRepulsion,
+  calculateVortexForce,
   getWaterGeometryOffsets,
   type Vector3D,
 } from './bondLogic';
@@ -84,15 +86,37 @@ function MolecularLattice({
     x: 0,
     y: 0,
   });
+  const lastTouch = useRef<{ x: number; y: number; time: number }>({ x: 0, y: 0, time: 0 });
+  const touchVelocity = useRef<{ vx: number; vy: number }>({ vx: 0, vy: 0 });
 
-  // Global touch listener so touches anywhere on mobile interact with the simulation
+  // Global touch listener with swipe velocity calculation
   useEffect(() => {
-    const handleTouch = (e: TouchEvent) => {
+    const handleTouchStart = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const touch = e.touches[0];
         if (touch) {
           const normX = (touch.clientX / window.innerWidth) * 2 - 1;
           const normY = -(touch.clientY / window.innerHeight) * 2 + 1;
+          touchState.current = { active: true, x: normX, y: normY };
+          lastTouch.current = { x: normX, y: normY, time: performance.now() };
+          touchVelocity.current = { vx: 0, vy: 0 };
+        }
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        if (touch) {
+          const normX = (touch.clientX / window.innerWidth) * 2 - 1;
+          const normY = -(touch.clientY / window.innerHeight) * 2 + 1;
+          const now = performance.now();
+          const dt = Math.max(0.005, (now - lastTouch.current.time) / 1000);
+          touchVelocity.current = {
+            vx: ((normX - lastTouch.current.x) / dt) * 0.1,
+            vy: ((normY - lastTouch.current.y) / dt) * 0.1,
+          };
+          lastTouch.current = { x: normX, y: normY, time: now };
           touchState.current = { active: true, x: normX, y: normY };
         }
       }
@@ -102,14 +126,14 @@ function MolecularLattice({
       touchState.current.active = false;
     };
 
-    window.addEventListener('touchstart', handleTouch, { passive: true });
-    window.addEventListener('touchmove', handleTouch, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
     window.addEventListener('touchcancel', handleTouchEnd, { passive: true });
 
     return () => {
-      window.removeEventListener('touchstart', handleTouch);
-      window.removeEventListener('touchmove', handleTouch);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('touchcancel', handleTouchEnd);
     };
@@ -127,18 +151,22 @@ function MolecularLattice({
       targetNormX = touchState.current.x;
       targetNormY = touchState.current.y;
     } else if (Math.abs(state.pointer.x) < 0.001 && Math.abs(state.pointer.y) < 0.001) {
-      // Autonomous organic drift when idle on touch devices
-      targetNormX = Math.sin(idleTime.current * 0.8) * 0.45;
-      targetNormY = Math.cos(idleTime.current * 0.6) * 0.35;
+      // Autonomous organic drift when idle
+      targetNormX = Math.sin(idleTime.current * 0.7) * 0.4;
+      targetNormY = Math.cos(idleTime.current * 0.5) * 0.3;
     }
 
     const targetWorldX = (targetNormX * viewport.width) / 2;
     const targetWorldY = (targetNormY * viewport.height) / 2;
 
-    // Smooth spring lerp for force field attractor
-    currentAttractor.current.x += (targetWorldX - currentAttractor.current.x) * 0.12;
-    currentAttractor.current.y += (targetWorldY - currentAttractor.current.y) * 0.12;
+    // Smooth spring lerp for force field probe
+    currentAttractor.current.x += (targetWorldX - currentAttractor.current.x) * 0.16;
+    currentAttractor.current.y += (targetWorldY - currentAttractor.current.y) * 0.16;
     pointerWorld.current = currentAttractor.current;
+
+    // Fluid drag velocity decay
+    touchVelocity.current.vx *= 0.92;
+    touchVelocity.current.vy *= 0.92;
 
     const scrollY = window.scrollY || 0;
     const scrollFactor = Math.min(scrollY / 600, 1.5);
@@ -147,36 +175,90 @@ function MolecularLattice({
     state.camera.position.z = 10 + scrollFactor * 4;
     state.camera.position.y = -scrollFactor * 2;
 
+    // Pairwise Steric Repulsion preventing ANY clumping or coagulation
+    for (let i = 0; i < molecules.length; i++) {
+      const molA = molecules[i]!;
+      for (let j = i + 1; j < molecules.length; j++) {
+        const molB = molecules[j]!;
+        const rep = calculateStericRepulsion(molA.pos, molB.pos, 1.85, 0.024);
+        molA.vel.x += rep.x;
+        molA.vel.y += rep.y;
+        molA.vel.z += rep.z;
+        molB.vel.x -= rep.x;
+        molB.vel.y -= rep.y;
+        molB.vel.z -= rep.z;
+      }
+    }
+
     const positionsList: Vector3D[] = [];
 
     // Update simulation
     molecules.forEach((mol, idx) => {
-      // Brownian motion drift
+      // Viscous liquid damping
+      mol.vel.multiplyScalar(0.965);
+
+      // Thermal fluctuations (Brownian motion)
+      mol.vel.x += (Math.random() - 0.5) * 0.0012;
+      mol.vel.y += (Math.random() - 0.5) * 0.0012;
+      mol.vel.z += (Math.random() - 0.5) * 0.0008;
+
+      // Integrate position
       mol.pos.add(mol.vel);
       mol.rot.x += mol.rotSpeed.x;
       mol.rot.y += mol.rotSpeed.y;
       mol.rot.z += mol.rotSpeed.z;
 
-      // Soft boundary reflection
-      if (Math.abs(mol.pos.x) > 8) mol.vel.x *= -1;
-      if (Math.abs(mol.pos.y) > 5) mol.vel.y *= -1;
-      if (Math.abs(mol.pos.z) > 4) mol.vel.z *= -1;
+      // Soft boundary restoring force
+      if (Math.abs(mol.pos.x) > 7.5) mol.vel.x -= Math.sign(mol.pos.x) * 0.015;
+      if (Math.abs(mol.pos.y) > 4.8) mol.vel.y -= Math.sign(mol.pos.y) * 0.015;
+      if (Math.abs(mol.pos.z) > 3.8) mol.vel.z -= Math.sign(mol.pos.z) * 0.015;
 
-      // Touch and pointer interactive attraction with enhanced responsiveness
-      const attractionForce = touchState.current.active ? 0.045 : 0.024;
-      const attractionRadius = touchState.current.active ? 6.5 : 4.8;
-      const attraction = calculatePointerAttraction(
-        { x: mol.pos.x, y: mol.pos.y, z: mol.pos.z },
+      // Anti-coagulation Probe Field:
+      // minCoreRadius pushes OUTWARD right under probe (cavity formation)
+      // intermediate shell stabilizes into an active solvation ring
+      const influenceRadius = touchState.current.active ? 6.0 : 4.5;
+      const attractionIntensity = touchState.current.active ? 0.038 : 0.018;
+      const minCoreRadius = touchState.current.active ? 2.2 : 1.5;
+
+      const pForce = calculatePointerAttraction(
+        mol.pos,
         pointerWorld.current,
-        attractionRadius,
-        attractionForce
+        influenceRadius,
+        attractionIntensity,
+        minCoreRadius
       );
-      mol.pos.x += attraction.x;
-      mol.pos.y += attraction.y;
+      mol.vel.x += pForce.x;
+      mol.vel.y += pForce.y;
+
+      // Hydrodynamic vortex swirl: creates fluid streamlines around probe
+      const vortex = calculateVortexForce(
+        mol.pos,
+        pointerWorld.current,
+        influenceRadius,
+        touchState.current.active ? 0.024 : 0.012
+      );
+      mol.vel.x += vortex.x;
+      mol.vel.y += vortex.y;
+
+      // Swipe / gesture momentum impulse (stirring fluid in touch direction)
+      if (
+        touchState.current.active &&
+        (Math.abs(touchVelocity.current.vx) > 0.005 || Math.abs(touchVelocity.current.vy) > 0.005)
+      ) {
+        const dx = mol.pos.x - pointerWorld.current.x;
+        const dy = mol.pos.y - pointerWorld.current.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < influenceRadius) {
+          const impulse = (1 - d / influenceRadius) * 0.08;
+          mol.vel.x += touchVelocity.current.vx * impulse;
+          mol.vel.y += touchVelocity.current.vy * impulse;
+          mol.rotSpeed.z += (touchVelocity.current.vx * dy - touchVelocity.current.vy * dx) * 0.001;
+        }
+      }
 
       // Disperse with scroll
       if (scrollFactor > 0.1) {
-        mol.pos.x += (mol.pos.x > 0 ? 1 : -1) * scrollFactor * 0.03;
+        mol.pos.x += (mol.pos.x > 0 ? 1 : -1) * scrollFactor * 0.02;
       }
 
       positionsList.push({ x: mol.pos.x, y: mol.pos.y, z: mol.pos.z });
