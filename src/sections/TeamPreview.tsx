@@ -61,7 +61,7 @@ export const TeamPreview: React.FC = () => {
           </div>
 
           <Button
-            to="/join#team"
+            to="/team"
             variant="outline"
             size="md"
             className="flex-1 sm:flex-initial"

@@ -9,6 +9,13 @@ import { updatePageSeo } from '@/lib/seo';
 import { ArrowUpRight, Award, Compass, BookOpen, Users } from 'lucide-react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
+const getAssetUrl = (path: string): string => {
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${cleanBase}${cleanPath}`;
+};
+
 export const About: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
 
@@ -60,10 +67,34 @@ export const About: React.FC = () => {
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: 12 }}
           animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-xs"
+          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-surface/90 border border-border shadow-xs max-w-[95vw]"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          <span>Charter & Scientific Mission</span>
+          <div className="flex items-center -space-x-1.5 shrink-0">
+            <div
+              className="w-7 h-7 rounded-lg bg-white p-0.5 shadow-2xs border border-border/60 flex items-center justify-center"
+              title="American Chemical Society"
+            >
+              <img
+                src={getAssetUrl('images/logos/acs-logo.svg')}
+                alt="ACS Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div
+              className="w-7 h-7 rounded-lg bg-white p-0.5 shadow-2xs border border-border/60 flex items-center justify-center"
+              title="IACS Kolkata"
+            >
+              <img
+                src={getAssetUrl('images/logos/iacs-logo.png')}
+                alt="IACS Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent truncate">
+            Charter & Scientific Mission · ACS × IACS
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0 hidden xs:inline-block" />
         </motion.div>
 
         <motion.h1

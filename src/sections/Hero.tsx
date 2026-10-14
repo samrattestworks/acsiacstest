@@ -11,6 +11,13 @@ import { scrollToElement } from '@/lib/navigation';
 // Lazy-load the Three.js 3D scene to keep initial bundle ultra-lean (<150KB gzip)
 const MoleculeScene = lazy(() => import('@/three/MoleculeScene'));
 
+const getAssetUrl = (path: string): string => {
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${cleanBase}${cleanPath}`;
+};
+
 export const Hero: React.FC = () => {
   const { supportsWebGL, tier } = useDeviceTier();
   const prefersReducedMotion = useReducedMotion();
@@ -61,15 +68,37 @@ export const Hero: React.FC = () => {
           animate={prefersReducedMotion ? undefined : 'visible'}
           className="flex flex-col items-center gap-4 sm:gap-6 w-full"
         >
-          {/* Institution Badge with Molecular Dot */}
+          {/* Official Dual Logos Institutional Badge */}
           <motion.div
             variants={prefersReducedMotion ? undefined : itemVariants}
-            className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-surface/80 border border-border/80 backdrop-blur-md shadow-xs max-w-[92vw]"
+            className="inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-surface/90 border border-border/90 backdrop-blur-md shadow-xs max-w-[95vw]"
           >
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse shrink-0" />
-            <span className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-muted truncate">
-              {siteConfig.meta.institution}
+            <div className="flex items-center -space-x-1.5 shrink-0">
+              <div
+                className="w-6 h-6 sm:w-7 sm:h-7 rounded-md bg-white p-0.5 shadow-2xs border border-border/60 flex items-center justify-center"
+                title="American Chemical Society (ACS)"
+              >
+                <img
+                  src={getAssetUrl('images/logos/acs-logo.svg')}
+                  alt="ACS Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div
+                className="w-6 h-6 sm:w-7 sm:h-7 rounded-md bg-white p-0.5 shadow-2xs border border-border/60 flex items-center justify-center"
+                title="IACS Kolkata"
+              >
+                <img
+                  src={getAssetUrl('images/logos/iacs-logo.png')}
+                  alt="IACS Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+            <span className="font-mono text-[11px] sm:text-xs font-semibold tracking-wider text-foreground truncate">
+              ACS International Chapter · IACS Kolkata
             </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0 hidden xs:inline-block" />
           </motion.div>
 
           {/* Main Headline Split by Lines - Fluid on Mobile */}

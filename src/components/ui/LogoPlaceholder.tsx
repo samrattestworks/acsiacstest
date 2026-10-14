@@ -7,6 +7,13 @@ export interface LogoPlaceholderProps {
   showSubtitle?: boolean;
 }
 
+const getAssetUrl = (path: string): string => {
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${cleanBase}${cleanPath}`;
+};
+
 export const LogoPlaceholder: React.FC<LogoPlaceholderProps> = ({
   className,
   showSubtitle = true,
@@ -20,39 +27,30 @@ export const LogoPlaceholder: React.FC<LogoPlaceholderProps> = ({
       )}
       aria-label="ACS IACS Student Chapter Home"
     >
-      {/* Geometric Molecular Hexagon Icon Placeholder */}
-      <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-primary/30 to-accent/20 border border-border flex items-center justify-center p-1.5 shadow-sm overflow-hidden group-hover:border-accent/40 transition-colors">
-        <svg
-          viewBox="0 0 40 40"
-          className="w-full h-full text-accent transition-transform duration-500 group-hover:rotate-12"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+      {/* Official Dual Badges: ACS Phoenix Emblem + IACS Kolkata Seal */}
+      <div className="flex items-center -space-x-2 shrink-0">
+        <div
+          className="relative z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white p-1 shadow-xs border border-border/80 flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+          title="American Chemical Society (ACS)"
         >
-          {/* Hexagonal Lattice */}
-          <polygon
-            points="20,4 34,12 34,28 20,36 6,28 6,12"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinejoin="round"
-            className="opacity-70"
+          <img
+            src={getAssetUrl('images/logos/acs-logo.svg')}
+            alt="American Chemical Society Logo"
+            className="w-full h-full object-contain"
+            loading="eager"
           />
-          {/* Internal Nodes & Bonds */}
-          <line
-            x1="20"
-            y1="4"
-            x2="20"
-            y2="20"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeDasharray="2 2"
+        </div>
+        <div
+          className="relative z-0 w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white p-1 shadow-xs border border-border/80 flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+          title="Indian Association for the Cultivation of Science (IACS Kolkata)"
+        >
+          <img
+            src={getAssetUrl('images/logos/iacs-logo.png')}
+            alt="IACS Kolkata Seal Logo"
+            className="w-full h-full object-contain"
+            loading="eager"
           />
-          <line x1="6" y1="28" x2="20" y2="20" stroke="currentColor" strokeWidth="1.5" />
-          <line x1="34" y1="28" x2="20" y2="20" stroke="currentColor" strokeWidth="1.5" />
-          <circle cx="20" cy="20" r="3.5" fill="var(--color-amber)" />
-          <circle cx="20" cy="4" r="2.5" fill="currentColor" />
-          <circle cx="34" cy="28" r="2.5" fill="currentColor" />
-          <circle cx="6" cy="28" r="2.5" fill="currentColor" />
-        </svg>
+        </div>
       </div>
 
       <div className="flex flex-col text-left">

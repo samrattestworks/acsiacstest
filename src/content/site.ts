@@ -145,10 +145,10 @@ export const siteConfig: SiteConfig = {
   navigation: {
     links: [
       { label: 'Home', href: '/' },
-      { label: 'About', href: '/#about' },
+      { label: 'About', href: '/about' },
       { label: 'Events', href: '/events' },
       { label: 'Event Registration', href: '/register' },
-      { label: 'Team', href: '/#team' },
+      { label: 'Team', href: '/team' },
       { label: 'Why Join', href: '/#why-join' },
     ],
     cta: {

@@ -5,6 +5,13 @@ import { LogoPlaceholder } from '@/components/ui/LogoPlaceholder';
 import { SocialLink } from '@/components/ui/SocialLink';
 import { scrollToElement } from '@/lib/navigation';
 
+const getAssetUrl = (path: string): string => {
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${cleanBase}${cleanPath}`;
+};
+
 export const Footer: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,11 +26,6 @@ export const Footer: React.FC = () => {
       } else {
         navigate('/');
       }
-      return;
-    }
-
-    if (href === '/#team' || href === '#team') {
-      scrollToElement('team');
       return;
     }
 
@@ -53,7 +55,33 @@ export const Footer: React.FC = () => {
             <p className="text-sm text-muted max-w-sm mt-1 sm:mt-2 leading-relaxed">
               {siteConfig.meta.heroDescription.split('\n')[0]}
             </p>
-            <span className="font-mono text-xs text-muted/70">{siteConfig.meta.heroSubtitle}</span>
+            <div className="flex items-center gap-3 pt-1">
+              <div className="flex items-center -space-x-1.5 shrink-0">
+                <div
+                  className="w-7 h-7 rounded-lg bg-white p-0.5 shadow-2xs border border-border/80 flex items-center justify-center"
+                  title="American Chemical Society (ACS)"
+                >
+                  <img
+                    src={getAssetUrl('images/logos/acs-logo.svg')}
+                    alt="ACS Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div
+                  className="w-7 h-7 rounded-lg bg-white p-0.5 shadow-2xs border border-border/80 flex items-center justify-center"
+                  title="Indian Association for the Cultivation of Science (IACS Kolkata)"
+                >
+                  <img
+                    src={getAssetUrl('images/logos/iacs-logo.png')}
+                    alt="IACS Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+              <span className="font-mono text-xs text-muted/80">
+                Official Charter · ACS & IACS Kolkata
+              </span>
+            </div>
           </div>
 
           {/* Quick Links Column */}
@@ -62,17 +90,32 @@ export const Footer: React.FC = () => {
               Navigation
             </h3>
             <ul className="flex flex-col gap-2.5 text-sm text-muted">
-              {siteConfig.navigation.links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="hover:text-accent transition-colors focus-visible:outline-accent cursor-pointer py-1 inline-block"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {siteConfig.navigation.links.map((link) => {
+                if (link.href.startsWith('/#')) {
+                  return (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleNavClick(e, link.href)}
+                        className="hover:text-accent transition-colors focus-visible:outline-accent cursor-pointer py-1 inline-block"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      onClick={(e) => handleNavClick(e, link.href)}
+                      className="hover:text-accent transition-colors focus-visible:outline-accent cursor-pointer py-1 inline-block"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
               <li>
                 <Link
                   to="/join"

@@ -60,11 +60,6 @@ export const Navbar: React.FC = () => {
       return;
     }
 
-    if (href === '/#team' || href === '#team') {
-      scrollToElement('team');
-      return;
-    }
-
     if (href.startsWith('/#')) {
       const sectionId = href.replace('/#', '');
       if (isHomePage) {
@@ -121,20 +116,35 @@ export const Navbar: React.FC = () => {
                     ? isHome && location.hash === link.href.replace('/', '')
                     : location.pathname === link.href || location.pathname === `${link.href}/`;
 
+              const className = cn(
+                'px-3.5 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-accent cursor-pointer select-none',
+                isActive
+                  ? 'text-accent bg-accent/10 border border-accent/20'
+                  : 'text-muted hover:text-foreground hover:bg-surface/50 border border-transparent'
+              );
+
+              if (link.href.startsWith('/#')) {
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={className}
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+
               return (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={cn(
-                    'px-3.5 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-accent cursor-pointer select-none',
-                    isActive
-                      ? 'text-accent bg-accent/10 border border-accent/20'
-                      : 'text-muted hover:text-foreground hover:bg-surface/50 border border-transparent'
-                  )}
+                  className={className}
                 >
                   {link.label}
-                </a>
+                </Link>
               );
             })}
           </nav>
@@ -223,18 +233,8 @@ export const Navbar: React.FC = () => {
                     ? isHome && location.hash === link.href.replace('/', '')
                     : location.pathname === link.href || location.pathname === `${link.href}/`;
 
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={cn(
-                    'group py-3.5 px-4 rounded-xl border transition-all flex items-center justify-between cursor-pointer select-none',
-                    isActive
-                      ? 'bg-accent/15 border-accent/40 text-accent font-bold'
-                      : 'bg-surface/50 border-border/50 text-foreground hover:border-accent/40 hover:bg-surface/90'
-                  )}
-                >
+              const content = (
+                <>
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-xs text-muted/60 group-hover:text-accent">
                       0{idx + 1}
@@ -250,7 +250,38 @@ export const Navbar: React.FC = () => {
                   ) : (
                     <ArrowUpRight className="w-4 h-4 text-muted/40 group-hover:text-accent transition-colors" />
                   )}
-                </a>
+                </>
+              );
+
+              const itemClass = cn(
+                'group py-3.5 px-4 rounded-xl border transition-all flex items-center justify-between cursor-pointer select-none',
+                isActive
+                  ? 'bg-accent/15 border-accent/40 text-accent font-bold'
+                  : 'bg-surface/50 border-border/50 text-foreground hover:border-accent/40 hover:bg-surface/90'
+              );
+
+              if (link.href.startsWith('/#')) {
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={itemClass}
+                  >
+                    {content}
+                  </a>
+                );
+              }
+
+              return (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={itemClass}
+                >
+                  {content}
+                </Link>
               );
             })}
 
