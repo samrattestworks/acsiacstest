@@ -82,10 +82,10 @@ export const About: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-base sm:text-lg text-muted max-w-2xl font-body leading-relaxed"
         >
-          The official American Chemical Society (ACS) Student Chapter at the Indian Association
-          for the Cultivation of Science (IACS), Kolkata — an international student platform
-          providing opportunities for chemistry students to engage in seminars, workshops,
-          networking events, and community outreach programs.
+          The official American Chemical Society (ACS) Student Chapter at the Indian Association for
+          the Cultivation of Science (IACS), Kolkata — an international student platform providing
+          opportunities for chemistry students to engage in seminars, workshops, networking events,
+          and community outreach programs.
         </motion.p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
