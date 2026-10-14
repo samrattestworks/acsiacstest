@@ -115,8 +115,7 @@ export const siteConfig: SiteConfig = {
     tagline: 'Precision in Discovery. Bonds that Endure.',
     heroDescription:
       'Official American Chemical Society student chapter at IACS, Kolkata.\nPioneering molecular research, collaborative discourse, and scientific outreach.',
-    heroSubtitle:
-      'Chapter Est. 2024 · Department of Chemical Sciences & Heritage Laboratories, IACS Kolkata',
+    heroSubtitle: 'Chapter Est. 2024 · IACS Kolkata',
     seo: {
       title: 'ACS IACS Student Chapter | Excellence in Molecular Sciences',
       description:
@@ -373,6 +372,6 @@ export const siteConfig: SiteConfig = {
     copyrightText: `© 2024–${new Date().getFullYear()} ACS IACS Student Chapter. All rights reserved.`,
     creatorText: 'Made with care by @madewithcaresamratchakraborty',
     subtext:
-      'Affiliated with the American Chemical Society · Department of Chemical Sciences & Heritage Laboratories, IACS Kolkata',
+      'Affiliated with the American Chemical Society and Indian Association for the Cultivation of Science.',
   },
 };
