@@ -11,12 +11,12 @@ import {
   Sparkles,
   Calendar,
   ShieldCheck,
-  ArrowUpRight,
 } from 'lucide-react';
 import { siteConfig } from '@/content/site';
 import { updatePageSeo } from '@/lib/seo';
 import { Button } from '@/components/ui/Button';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { scrollToElement } from '@/lib/navigation';
 
 export const Register: React.FC = () => {
   const [waitlistEmail, setWaitlistEmail] = useState('');
@@ -47,21 +47,22 @@ export const Register: React.FC = () => {
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: 12 }}
           animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber font-mono text-xs"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber font-mono text-xs font-semibold"
         >
-          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-          <span>Coming Soon · Symbiosis 2026 Registration</span>
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
+          <span>SYMBIOSIS 2026 · REGISTRATION COMING SOON</span>
         </motion.div>
 
         <motion.h1
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
           animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08 }}
-          className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-foreground tracking-tight max-w-3xl leading-tight"
+          className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-foreground tracking-tight max-w-4xl leading-tight"
         >
-          Symbiosis 2026 Registration
-          <span className="block text-2xl sm:text-3xl lg:text-4xl text-accent font-extrabold mt-1">
-            (Coming Soon)
+          Event Registration: <br className="hidden sm:inline" />
+          <span className="text-accent">Symbiosis 2026</span>
+          <span className="inline-block sm:ml-3 px-3.5 py-1 rounded-full text-sm sm:text-lg font-mono bg-amber-500/15 border border-amber-500/30 text-amber font-bold align-middle mt-2 sm:mt-0">
+            Coming Soon
           </span>
         </motion.h1>
 
@@ -71,8 +72,9 @@ export const Register: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.16 }}
           className="text-base sm:text-lg text-muted max-w-2xl font-body leading-relaxed"
         >
-          Official delegate and participant registration portal for Symbiosis 2026 at the Indian
-          Association for the Cultivation of Science, Kolkata. Registration will open soon.
+          Official delegate and participant registration portal for <strong>Symbiosis 2026</strong>,
+          the flagship annual chemistry symposium of the ACS IACS Student Chapter at the Indian
+          Association for the Cultivation of Science, Kolkata. Registration will unlock soon.
         </motion.p>
       </section>
 
@@ -109,51 +111,59 @@ export const Register: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. Official Closure Announcement Banner */}
+      {/* 2. Official Symbiosis 2026 Coming Soon Announcement Banner */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full mb-8">
-        <div className="p-5 sm:p-6 rounded-2xl bg-amber-500/5 border border-amber-500/30 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-          <div className="flex items-start gap-3.5">
-            <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber shrink-0 mt-0.5">
-              <Lock className="w-5 h-5 text-amber" />
+        <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-amber-500/10 via-surface to-accent/5 border border-amber-500/30 shadow-card flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="p-3 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber shrink-0 mt-0.5">
+              <Sparkles className="w-6 h-6 text-amber" />
             </div>
-            <div className="flex flex-col gap-1">
-              <h2 className="font-display font-bold text-base sm:text-lg text-foreground flex items-center gap-2">
-                Symbiosis 2026 Registration
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/20 text-amber font-semibold uppercase">
-                  Coming Soon
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono bg-amber-500/20 text-amber font-bold uppercase tracking-wider">
+                  ✨ Coming Soon
                 </span>
+                <span className="text-xs font-mono text-muted">
+                  IACS Kolkata · Annual Flagship Symposium
+                </span>
+              </div>
+              <h2 className="font-display font-black text-xl sm:text-2xl text-foreground">
+                Symbiosis 2026 Registration
               </h2>
               <p className="text-xs sm:text-sm text-muted leading-relaxed max-w-xl font-body">
-                Registration for Symbiosis 2026 is coming soon. Follow our official channels for
-                announcements, keynote speaker revelations, and delegate intake deadlines.
+                Registration for delegate attendance, oral paper presentations, and research poster
+                sessions at <strong>Symbiosis 2026</strong> will open soon. Sign up to the waitlist
+                below to get notified the moment intake unlocks!
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 self-stretch md:self-auto shrink-0">
-            <Button
-              href={siteConfig.links.registration}
-              variant="primary"
-              size="sm"
-              className="w-full md:w-auto text-xs py-2 px-3.5"
-              iconRight={<ArrowUpRight className="w-4 h-4 ml-0.5" />}
+          <div className="flex flex-col sm:flex-row items-center gap-2.5 self-stretch md:self-auto shrink-0">
+            <button
+              type="button"
+              onClick={() => scrollToElement('waitlist-section')}
+              className="px-4 py-2.5 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber hover:bg-amber-500/25 transition-colors font-mono text-xs font-semibold flex items-center justify-center gap-2 w-full sm:w-auto cursor-pointer"
             >
-              Open Registration Form
-            </Button>
+              <Bell className="w-3.5 h-3.5" />
+              <span>Get Notified When Open</span>
+            </button>
             <Button
               to="/events"
               variant="outline"
               size="sm"
-              className="w-full md:w-auto text-xs py-2 px-3"
+              className="w-full sm:w-auto text-xs py-2 px-3"
             >
-              Explore Events
+              Past Events Archive →
             </Button>
           </div>
         </div>
       </section>
 
       {/* 3. Waitlist Notification Signup */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full mb-10">
+      <section
+        id="waitlist-section"
+        className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full mb-10 scroll-mt-24"
+      >
         <div className="p-5 sm:p-6 rounded-2xl bg-surface/80 border border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3 w-full md:w-auto">
             <Bell className="w-5 h-5 text-accent shrink-0" />
@@ -213,9 +223,9 @@ export const Register: React.FC = () => {
               </div>
             </div>
 
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface border border-border/80 text-muted font-mono text-xs">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber font-mono text-xs font-semibold">
               <Lock className="w-3.5 h-3.5 text-amber" />
-              <span>Registration Opening Soon</span>
+              <span>Symbiosis 2026 · Coming Soon</span>
             </div>
           </div>
 
