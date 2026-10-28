@@ -95,11 +95,6 @@ export const TeamPreview: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-1">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-accent px-2 py-0.5 rounded bg-accent/10 border border-accent/20">
-                  {member.group}
-                </span>
-              </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-foreground mt-0.5 truncate">
                 {member.name}
               </h3>

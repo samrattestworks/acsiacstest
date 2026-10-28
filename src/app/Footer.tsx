@@ -130,10 +130,16 @@ export const Footer: React.FC = () => {
           {/* Social Channels Column */}
           <div className="md:col-span-4 flex flex-col gap-4">
             <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">
-              Connect With The Chapter
+              Contact & Connect
             </h3>
             <p className="text-xs text-muted">
-              Follow our official feeds for seminar schedules, outreach dates, and research calls.
+              Official email:{' '}
+              <a
+                href={siteConfig.links.social.email}
+                className="text-accent hover:underline font-mono"
+              >
+                acsiacs.studentchapter@gmail.com
+              </a>
             </p>
             <div className="flex flex-wrap items-center gap-2.5 pt-1">
               <SocialLink platform="instagram" href={siteConfig.links.social.instagram} />

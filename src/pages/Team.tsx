@@ -5,7 +5,7 @@ import { Marquee } from '@/components/ui/Marquee';
 import { Button } from '@/components/ui/Button';
 import { siteConfig } from '@/content/site';
 import { updatePageSeo } from '@/lib/seo';
-import { ArrowUpRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck, Sparkles, Mail } from 'lucide-react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 export const Team: React.FC = () => {
@@ -73,7 +73,38 @@ export const Team: React.FC = () => {
       {/* Decorative Marquee */}
       <Marquee speedSeconds={45} className="my-10" />
 
-      {/* 3. Join Executive Committee Callout Banner */}
+      {/* 3. Official Contact Us Banner */}
+      <section className="py-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full select-none">
+        <div className="p-6 sm:p-8 rounded-3xl bg-surface border border-border flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+            <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
+              <Mail className="w-6 h-6" />
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-mono text-xs uppercase tracking-wider text-accent font-semibold">
+                // Official Correspondence
+              </span>
+              <h2 className="font-display font-bold text-xl sm:text-2xl text-foreground">
+                Contact Chapter Leadership
+              </h2>
+              <p className="text-xs sm:text-sm text-muted max-w-xl">
+                For administrative inquiries, collaborations, or guest invitations, reach our
+                official inbox directly:
+              </p>
+            </div>
+          </div>
+
+          <a
+            href={siteConfig.links.social.email}
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent text-accent-foreground font-mono text-xs sm:text-sm font-semibold hover:opacity-90 transition-opacity shrink-0 shadow-sm"
+          >
+            <Mail className="w-4 h-4" />
+            <span>acsiacs.studentchapter@gmail.com</span>
+          </a>
+        </div>
+      </section>
+
+      {/* 4. Join Executive Committee Callout Banner */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full select-none">
         <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-surface via-surface-hover to-primary/10 border border-border relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 shadow-card">
           <div className="flex flex-col gap-3 text-center md:text-left max-w-md">

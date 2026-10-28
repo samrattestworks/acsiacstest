@@ -135,10 +135,17 @@ export const Action: React.FC = () => {
             </div>
 
             <div>
-              <h2 className="font-display font-bold text-lg sm:text-xl text-foreground">Connect</h2>
+              <h2 className="font-display font-bold text-lg sm:text-xl text-foreground">
+                Contact & Connect
+              </h2>
               <p className="text-xs sm:text-sm text-muted mt-1 leading-relaxed">
-                Reach the chapter team directly across all official scientific networks and
-                channels.
+                Contact the chapter team directly at{' '}
+                <a
+                  href={siteConfig.links.social.email}
+                  className="text-accent font-mono hover:underline inline-block"
+                >
+                  acsiacs.studentchapter@gmail.com
+                </a>
               </p>
             </div>
           </div>

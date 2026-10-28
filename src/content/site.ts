@@ -166,7 +166,7 @@ export const siteConfig: SiteConfig = {
       x: 'https://x.com/placeholder_acsiacs',
       youtube: 'https://youtube.com/@placeholder_acsiacs',
       github: 'https://github.com/placeholder-acsiacs',
-      email: 'mailto:contact@placeholder-acsiacs.res.in',
+      email: 'mailto:acsiacs.studentchapter@gmail.com',
     },
   },
 
@@ -306,9 +306,6 @@ export const siteConfig: SiteConfig = {
       role: 'Faculty Advisor & Patron',
       group: 'Core',
       photo: 'team/ayan-datta.webp',
-      links: {
-        email: 'mailto:spad@iacs.res.in',
-      },
     },
     {
       id: 'member-shreya-mukherjee',
@@ -316,10 +313,6 @@ export const siteConfig: SiteConfig = {
       role: 'Chapter President',
       group: 'Core',
       photo: 'team/shreya-mukherjee.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-        email: 'mailto:president@iacs.res.in',
-      },
     },
     {
       id: 'member-maria-mukherjee',
@@ -327,10 +320,6 @@ export const siteConfig: SiteConfig = {
       role: 'Vice President',
       group: 'Core',
       photo: 'team/maria-mukherjee.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-        email: 'mailto:vp@iacs.res.in',
-      },
     },
     {
       id: 'member-koushik-saha',
@@ -338,10 +327,6 @@ export const siteConfig: SiteConfig = {
       role: 'General Secretary',
       group: 'Core',
       photo: 'team/koushik-saha.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-        email: 'mailto:secretary@iacs.res.in',
-      },
     },
     {
       id: 'member-bikram-das',
@@ -349,80 +334,6 @@ export const siteConfig: SiteConfig = {
       role: 'Treasurer & Finance Lead',
       group: 'Core',
       photo: 'team/bikram-das.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-        email: 'mailto:treasurer@iacs.res.in',
-      },
-    },
-    {
-      id: 'member-sanjukta-chatterjee',
-      name: 'Sanjukta Chatterjee',
-      role: 'Outreach Coordinator',
-      group: 'Leads',
-      photo: 'team/sanjukta-chatterjee.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-      },
-    },
-    {
-      id: 'member-pallabi-pradhan',
-      name: 'Pallabi Pradhan',
-      role: 'Communications Chair',
-      group: 'Leads',
-      photo: 'team/pallabi-pradhan.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-      },
-    },
-    {
-      id: 'member-abhishek-anand',
-      name: 'Abhishek Anand',
-      role: 'Logistics Officer',
-      group: 'Leads',
-      photo: 'team/abhishek-anand.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-      },
-    },
-    {
-      id: 'member-avani-jain',
-      name: 'Avani Jain',
-      role: 'Logistics Officer',
-      group: 'Leads',
-      photo: 'team/avani-jain.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-      },
-    },
-    {
-      id: 'member-bachchu-mondal',
-      name: 'Bachchu Mondal',
-      role: 'Research Officer',
-      group: 'Members',
-      photo: 'team/bachchu-mondal.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-      },
-    },
-    {
-      id: 'member-shouvik-maiti',
-      name: 'Shouvik Maiti',
-      role: 'Research Officer',
-      group: 'Members',
-      photo: 'team/shouvik-maiti.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-      },
-    },
-    {
-      id: 'member-sujan-paul',
-      name: 'Sujan Paul',
-      role: 'Research Officer',
-      group: 'Members',
-      photo: 'team/sujan-paul.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-      },
     },
     {
       id: 'member-samrat-chakraborty',
@@ -430,9 +341,55 @@ export const siteConfig: SiteConfig = {
       role: 'Class Representative',
       group: 'Members',
       photo: 'team/samrat-chakraborty.webp',
-      links: {
-        linkedin: 'https://linkedin.com',
-      },
+    },
+    {
+      id: 'member-sanjukta-chatterjee',
+      name: 'Sanjukta Chatterjee',
+      role: 'Outreach Coordinator',
+      group: 'Leads',
+      photo: 'team/sanjukta-chatterjee.webp',
+    },
+    {
+      id: 'member-pallabi-pradhan',
+      name: 'Pallabi Pradhan',
+      role: 'Communications Chair',
+      group: 'Leads',
+      photo: 'team/pallabi-pradhan.webp',
+    },
+    {
+      id: 'member-abhishek-anand',
+      name: 'Abhishek Anand',
+      role: 'Logistics Officer',
+      group: 'Leads',
+      photo: 'team/abhishek-anand.webp',
+    },
+    {
+      id: 'member-avani-jain',
+      name: 'Avani Jain',
+      role: 'Logistics Officer',
+      group: 'Leads',
+      photo: 'team/avani-jain.webp',
+    },
+    {
+      id: 'member-bachchu-mondal',
+      name: 'Bachchu Mondal',
+      role: 'Research Officer',
+      group: 'Members',
+      photo: 'team/bachchu-mondal.webp',
+    },
+    {
+      id: 'member-shouvik-maiti',
+      name: 'Shouvik Maiti',
+      role: 'Research Officer',
+      group: 'Members',
+      photo: 'team/shouvik-maiti.webp',
+    },
+    {
+      id: 'member-sujan-paul',
+      name: 'Sujan Paul',
+      role: 'Research Officer',
+      group: 'Members',
+      photo: 'team/sujan-paul.webp',
     },
   ],
 
