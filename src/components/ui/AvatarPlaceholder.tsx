@@ -1,6 +1,7 @@
 import React from 'react';
 import { Img } from './Img';
 import { cn } from '@/lib/cn';
+import { getAssetUrl } from '@/lib/navigation';
 
 export interface AvatarPlaceholderProps {
   name: string;
@@ -18,7 +19,7 @@ export const AvatarPlaceholder: React.FC<AvatarPlaceholderProps> = ({
   if (photo) {
     return (
       <Img
-        src={photo}
+        src={getAssetUrl(photo)}
         alt={`Photo of ${name}`}
         width={size}
         height={size}

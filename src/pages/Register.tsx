@@ -50,7 +50,7 @@ export const Register: React.FC = () => {
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber font-mono text-xs"
         >
           <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-          <span>Status: Symbiosis 2026 Registration Opening Soon</span>
+          <span>Coming Soon · Symbiosis 2026 Registration</span>
         </motion.div>
 
         <motion.h1
@@ -60,6 +60,9 @@ export const Register: React.FC = () => {
           className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-foreground tracking-tight max-w-3xl leading-tight"
         >
           Symbiosis 2026 Registration
+          <span className="block text-2xl sm:text-3xl lg:text-4xl text-accent font-extrabold mt-1">
+            (Coming Soon)
+          </span>
         </motion.h1>
 
         <motion.p
@@ -117,12 +120,12 @@ export const Register: React.FC = () => {
               <h2 className="font-display font-bold text-base sm:text-lg text-foreground flex items-center gap-2">
                 Symbiosis 2026 Registration
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/20 text-amber font-semibold uppercase">
-                  Opening Soon
+                  Coming Soon
                 </span>
               </h2>
               <p className="text-xs sm:text-sm text-muted leading-relaxed max-w-xl font-body">
-                Registration for Symbiosis 2026 will open soon. Follow our official channels for
-                announcements and intake deadlines.
+                Registration for Symbiosis 2026 is coming soon. Follow our official channels for
+                announcements, keynote speaker revelations, and delegate intake deadlines.
               </p>
             </div>
           </div>
@@ -374,10 +377,10 @@ export const Register: React.FC = () => {
               <button
                 type="button"
                 disabled
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-muted/20 border border-border text-muted font-display font-semibold text-sm flex items-center justify-center gap-2 cursor-not-allowed"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber font-display font-semibold text-sm flex items-center justify-center gap-2 cursor-not-allowed"
               >
                 <Lock className="w-4 h-4" />
-                <span>Registration Opening Soon</span>
+                <span>Symbiosis 2026 · Coming Soon</span>
               </button>
             </div>
           </form>

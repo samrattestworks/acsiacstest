@@ -6,7 +6,7 @@ import { AvatarPlaceholder } from '@/components/ui/AvatarPlaceholder';
 import { Button } from '@/components/ui/Button';
 
 export const TeamPreview: React.FC = () => {
-  const previewMembers = siteConfig.team.slice(0, 6);
+  const previewMembers = siteConfig.team;
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = (direction: 'left' | 'right') => {

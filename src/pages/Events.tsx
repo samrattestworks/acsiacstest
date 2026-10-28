@@ -84,7 +84,7 @@ interface ChapterEvent {
   year: string;
   title: string;
   subtitle: string;
-  status: 'Done' | 'Registration Opening Soon';
+  status: 'Coming Soon' | 'Done' | 'Concluded' | 'Registration Opening Soon';
   isUpcoming?: boolean;
   description: string;
   hasGallery?: boolean;
@@ -92,33 +92,33 @@ interface ChapterEvent {
 
 const EVENTS_LIST: ChapterEvent[] = [
   {
-    id: 'symbiosis-2025',
-    year: '2025',
-    title: 'Symbiosis 2025',
-    subtitle: 'Annual Chemistry Symposium & Research Exchange',
-    status: 'Done',
+    id: 'symbiosis-2026',
+    year: '2026',
+    title: 'Symbiosis 2026',
+    subtitle: 'Flagship Annual Chemistry Symposium & Student Meet',
+    status: 'Coming Soon',
+    isUpcoming: true,
     description:
-      'The premier annual chemistry symposium organized by the ACS IACS Student Chapter. Brought together faculty members, graduate scholars, and undergraduate researchers for oral presentations, technical discussions, and academic exchange.',
+      'The upcoming flagship 2026 edition of Symbiosis is scheduled at IACS Kolkata. Featuring invited international and national keynote speakers, student oral research talks, competitive poster sessions, and chemistry outreach workshops. Delegate registrations will unlock soon.',
   },
   {
     id: 'scivision-2025',
     year: '2025',
     title: 'SciVation 2025',
     subtitle: 'Flagship Scientific Conference & Research Exhibition',
-    status: 'Done',
+    status: 'Concluded',
     hasGallery: true,
     description:
       'Flagship annual scientific conference held on 15 February 2025 at IACS Kolkata. Featured distinguished keynote lectures—including reticular chemistry and porous covalent organic frameworks (COFs) by Prof. Rahul Banerjee (IISER Kolkata)—technical poster sessions, and vibrant inter-institutional student participation.',
   },
   {
-    id: 'symbiosis-2026',
-    year: '2026',
-    title: 'Symbiosis 2026',
-    subtitle: 'Flagship Annual Chemistry Symposium & Student Meet',
-    status: 'Registration Opening Soon',
-    isUpcoming: true,
+    id: 'symbiosis-2025',
+    year: '2025',
+    title: 'Symbiosis 2025',
+    subtitle: 'Annual Chemistry Symposium & Research Exchange',
+    status: 'Concluded',
     description:
-      'The upcoming flagship 2026 edition of Symbiosis is scheduled at IACS Kolkata. Featuring invited international and national keynote speakers, student oral research talks, competitive poster sessions, and chemistry outreach workshops. Delegate registrations will unlock soon.',
+      'The premier annual chemistry symposium organized by the ACS IACS Student Chapter. Brought together faculty members, graduate scholars, and undergraduate researchers for oral presentations, technical discussions, and academic exchange.',
   },
 ];
 
@@ -238,16 +238,17 @@ export const Events: React.FC = () => {
 
               {/* Event Body Content */}
               {event.isUpcoming ? (
-                /* Symbiosis 2026: Registration Opening Soon */
-                <div className="p-6 sm:p-8 rounded-xl bg-surface border border-border flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+                /* Symbiosis 2026: Coming Soon / Registration Opening Soon */
+                <div className="p-6 sm:p-8 rounded-xl bg-gradient-to-r from-amber-500/10 via-surface to-accent/5 border border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
                   <div className="flex flex-col gap-1.5">
                     <p className="font-display font-bold text-lg text-foreground flex items-center justify-center sm:justify-start gap-2">
-                      <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                      Registration Opening Soon
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
+                      Symbiosis 2026 · Coming Soon
                     </p>
                     <p className="font-body text-xs sm:text-sm text-muted max-w-xl leading-relaxed">
-                      Registration for Symbiosis 2026 will unlock soon. Follow our announcements or
-                      join the chapter notification waitlist to be notified first.
+                      Our flagship annual symposium Symbiosis 2026 is currently in preparation.
+                      Delegate registrations, poster submissions, and speaker schedules will be
+                      announced soon.
                     </p>
                   </div>
                   <Button
@@ -257,7 +258,7 @@ export const Events: React.FC = () => {
                     className="shrink-0 text-xs py-2.5 px-5 shadow-sm"
                     iconRight={<ArrowUpRight className="w-4 h-4 ml-0.5" />}
                   >
-                    Registration Details
+                    Registration Portal (Coming Soon)
                   </Button>
                 </div>
               ) : event.hasGallery ? (

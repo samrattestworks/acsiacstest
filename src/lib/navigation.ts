@@ -7,6 +7,20 @@ declare global {
 }
 
 /**
+ * Safely resolves asset paths with respect to Vite's base URL (e.g. '/acsiacstest/' on GitHub Pages).
+ */
+export function getAssetUrl(path: string): string {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+    return path;
+  }
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${cleanBase}${cleanPath}`;
+}
+
+/**
  * Robust scroll-to-target function that respects Lenis, fixed navbar offset, and reduced motion.
  */
 export function scrollToElement(

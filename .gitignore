@@ -29,3 +29,4 @@ test-results/
 *.sw?
 *.pdf
 .system_generated/
+photos/
