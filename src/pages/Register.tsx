@@ -219,8 +219,8 @@ export const Register: React.FC = () => {
                   Universities · Colleges · Institutes
                 </p>
                 <p className="font-body text-xs sm:text-sm text-muted mt-2 leading-relaxed">
-                  For students and researchers from universities, colleges, IITs, IISERs, and other
-                  national and international institutions.
+                  For undergraduate and postgraduate students from universities, colleges, IITs,
+                  IISERs, and other national and international institutions.
                 </p>
               </div>
 

@@ -453,9 +453,8 @@ export const Symbiosis2026: React.FC = () => {
                   All Universities, Colleges &amp; Institutes
                 </p>
                 <p className="font-body text-xs sm:text-sm text-muted mt-3 leading-relaxed">
-                  Open to all undergraduate, postgraduate, doctoral, and postdoctoral delegates from
-                  universities, colleges, IITs, IISERs, and research institutions across India and
-                  globally.
+                  Open to all undergraduate and postgraduate delegates from universities, colleges,
+                  IITs, IISERs, and institutions across India and globally.
                 </p>
               </div>
 
