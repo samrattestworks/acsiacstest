@@ -84,7 +84,7 @@ interface ChapterEvent {
   year: string;
   title: string;
   subtitle: string;
-  status: 'Coming Soon' | 'Done' | 'Concluded' | 'Registration Opening Soon';
+  status: 'Registrations Open' | 'Coming Soon' | 'Done' | 'Concluded';
   isUpcoming?: boolean;
   description: string;
   hasGallery?: boolean;
@@ -95,11 +95,12 @@ const EVENTS_LIST: ChapterEvent[] = [
     id: 'symbiosis-2026',
     year: '2026',
     title: 'Symbiosis 2026',
-    subtitle: 'Flagship Annual Chemistry Symposium & Student Meet',
-    status: 'Coming Soon',
+    subtitle:
+      'Convergent Frontiers in Materials Science & Chemical Biology for Sustainable Development',
+    status: 'Registrations Open',
     isUpcoming: true,
     description:
-      'The upcoming flagship 2026 edition of Symbiosis is scheduled at IACS Kolkata. Featuring invited international and national keynote speakers, student oral research talks, competitive poster sessions, and chemistry outreach workshops. Delegate registrations will unlock soon.',
+      'The flagship 2026 edition of Symbiosis is officially scheduled for 15th December 2026 (10:30 AM onwards) at CV Raman Hall, IACS Kolkata (Hybrid mode). Featuring international & national keynote speakers, student oral research talks, poster competitions, and chemistry outreach. Delegate registrations are actively open.',
   },
   {
     id: 'scivision-2025',
@@ -220,12 +221,12 @@ export const Events: React.FC = () => {
                 <div
                   className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full font-mono text-xs font-semibold self-start sm:self-auto ${
                     event.isUpcoming
-                      ? 'bg-amber-500/15 border border-amber-500/30 text-amber'
+                      ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
                       : 'bg-surface border border-border text-muted'
                   }`}
                 >
                   {event.isUpcoming && (
-                    <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   )}
                   <span>{event.status}</span>
                 </div>
@@ -238,28 +239,68 @@ export const Events: React.FC = () => {
 
               {/* Event Body Content */}
               {event.isUpcoming ? (
-                /* Symbiosis 2026: Coming Soon / Registration Opening Soon */
-                <div className="p-6 sm:p-8 rounded-xl bg-gradient-to-r from-amber-500/10 via-surface to-accent/5 border border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
-                  <div className="flex flex-col gap-1.5">
-                    <p className="font-display font-bold text-lg text-foreground flex items-center justify-center sm:justify-start gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
-                      Symbiosis 2026 · Coming Soon
-                    </p>
-                    <p className="font-body text-xs sm:text-sm text-muted max-w-xl leading-relaxed">
-                      Our flagship annual symposium Symbiosis 2026 is currently in preparation.
-                      Delegate registrations, poster submissions, and speaker schedules will be
-                      announced soon.
-                    </p>
+                /* Symbiosis 2026: Active Registration & Poster Hub */
+                <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-accent/15 via-surface to-primary/10 border border-accent/40 flex flex-col md:flex-row items-center justify-between gap-6">
+                  {/* Poster Thumbnail */}
+                  <div className="w-full md:w-48 shrink-0 rounded-xl overflow-hidden border border-border shadow-md">
+                    <img
+                      src={getAssetUrl(siteConfig.symbiosis2026.poster.thumb)}
+                      alt="Symbiosis 2026 Poster"
+                      className="w-full h-auto object-cover"
+                    />
                   </div>
-                  <Button
-                    to="/register"
-                    variant="primary"
-                    size="md"
-                    className="shrink-0 text-xs py-2.5 px-5 shadow-sm"
-                    iconRight={<ArrowUpRight className="w-4 h-4 ml-0.5" />}
-                  >
-                    Registration Portal (Coming Soon)
-                  </Button>
+
+                  <div className="flex flex-col gap-2 flex-grow text-left">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                        15th Dec 2026 · 10:30 AM IST
+                      </span>
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold bg-accent/15 text-accent border border-accent/30">
+                        CV Raman Hall · Hybrid Mode
+                      </span>
+                    </div>
+
+                    <p className="font-display font-bold text-lg text-foreground">
+                      Symbiosis 2026 Registration is Live
+                    </p>
+                    <p className="font-body text-xs sm:text-sm text-muted leading-relaxed">
+                      Theme: Convergent Frontiers in Materials Science &amp; Chemical Biology for
+                      Sustainable Development. View the dedicated symposium portal for real-time
+                      countdown, program highlights, and registration links.
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-3 pt-2">
+                      <Button
+                        to="/symbiosis-2026"
+                        variant="primary"
+                        size="sm"
+                        className="text-xs py-2 px-4 shadow-sm"
+                        iconRight={<ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />}
+                      >
+                        Open Symbiosis 2026 Page
+                      </Button>
+
+                      <a
+                        href={siteConfig.symbiosis2026.registration.iacsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-2 rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                      >
+                        <span>IACS Students Form</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+
+                      <a
+                        href={siteConfig.symbiosis2026.registration.externalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-2 rounded-lg bg-accent/10 hover:bg-accent/20 border border-accent/30 text-accent font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                      >
+                        <span>External Delegates Form</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               ) : event.hasGallery ? (
                 /* SciVation 2025: Interactive Photo Gallery */

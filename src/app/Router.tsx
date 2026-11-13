@@ -10,6 +10,7 @@ const Team = lazy(() => import('@/pages/Team'));
 const Join = lazy(() => import('@/pages/Join'));
 const Events = lazy(() => import('@/pages/Events'));
 const Register = lazy(() => import('@/pages/Register'));
+const Symbiosis2026 = lazy(() => import('@/pages/Symbiosis2026'));
 const NotFound = lazy(() => import('@/pages/NotFound').then((m) => ({ default: m.NotFound })));
 
 const RouteLoading: React.FC = () => (
@@ -75,6 +76,22 @@ export const AppRouter: React.FC = () => {
               element={
                 <Suspense fallback={<RouteLoading />}>
                   <Register />
+                </Suspense>
+              }
+            />
+            <Route
+              path="symbiosis-2026"
+              element={
+                <Suspense fallback={<RouteLoading />}>
+                  <Symbiosis2026 />
+                </Suspense>
+              }
+            />
+            <Route
+              path="symbiosis"
+              element={
+                <Suspense fallback={<RouteLoading />}>
+                  <Symbiosis2026 />
                 </Suspense>
               }
             />

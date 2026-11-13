@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowDown } from 'lucide-react';
 import { siteConfig } from '@/content/site';
@@ -120,19 +121,45 @@ export const Hero: React.FC = () => {
             {siteConfig.meta.heroDescription}
           </motion.p>
 
-          {/* 2 CTAs: Join Us & Learn More */}
+          {/* Symbiosis 2026 Flagship Live Callout Pill */}
+          <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+            <Link
+              to="/symbiosis-2026"
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-accent/20 via-amber/15 to-accent/20 border border-accent/40 text-foreground font-mono text-xs hover:border-accent hover:shadow-md transition-all shadow-xs backdrop-blur-md cursor-pointer group"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-bold text-accent">Symbiosis 2026 Announced:</span>
+              <span className="text-muted group-hover:text-foreground transition-colors">
+                15 Dec 2026 · Hybrid Mode
+              </span>
+              <span className="font-semibold text-accent underline flex items-center gap-0.5">
+                <span>View &amp; Register</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </span>
+            </Link>
+          </motion.div>
+
+          {/* CTAs: Symbiosis 2026, Join Us & Learn More */}
           <motion.div
             variants={prefersReducedMotion ? undefined : itemVariants}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-3 w-full sm:w-auto px-4 sm:px-0"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-1 sm:pt-2 w-full sm:w-auto px-4 sm:px-0"
           >
             <Button
-              to="/join"
+              to="/symbiosis-2026"
               variant="primary"
               size="lg"
-              className="w-full sm:w-auto min-h-[48px] shadow-lg shadow-primary/25"
+              className="w-full sm:w-auto min-h-[48px] bg-gradient-to-r from-accent to-amber hover:opacity-95 text-white shadow-lg shadow-accent/25"
               iconRight={<ArrowUpRight className="w-5 h-5 ml-1" />}
             >
-              Join Us
+              Symbiosis 2026
+            </Button>
+            <Button
+              to="/join"
+              variant="secondary"
+              size="lg"
+              className="w-full sm:w-auto min-h-[48px]"
+            >
+              Join Chapter
             </Button>
             <Button
               href="#about"
@@ -144,7 +171,7 @@ export const Hero: React.FC = () => {
               size="lg"
               className="w-full sm:w-auto min-h-[48px]"
             >
-              Learn More
+              About Chapter
             </Button>
           </motion.div>
 

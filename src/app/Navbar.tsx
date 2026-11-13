@@ -116,11 +116,24 @@ export const Navbar: React.FC = () => {
                     ? isHome && location.hash === link.href.replace('/', '')
                     : location.pathname === link.href || location.pathname === `${link.href}/`;
 
+              const isSymbiosis = link.href === '/symbiosis-2026';
+
               const className = cn(
-                'px-3.5 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-accent cursor-pointer select-none',
+                'px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-accent cursor-pointer select-none flex items-center gap-1.5',
                 isActive
-                  ? 'text-accent bg-accent/10 border border-accent/20'
-                  : 'text-muted hover:text-foreground hover:bg-surface/50 border border-transparent'
+                  ? 'text-accent bg-accent/15 border border-accent/30 font-semibold'
+                  : isSymbiosis
+                    ? 'text-accent font-semibold bg-accent/10 hover:bg-accent/20 border border-accent/30 shadow-2xs'
+                    : 'text-muted hover:text-foreground hover:bg-surface/50 border border-transparent'
+              );
+
+              const content = (
+                <>
+                  {isSymbiosis && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  )}
+                  <span>{link.label}</span>
+                </>
               );
 
               if (link.href.startsWith('/#')) {
@@ -131,7 +144,7 @@ export const Navbar: React.FC = () => {
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={className}
                   >
-                    {link.label}
+                    {content}
                   </a>
                 );
               }
@@ -143,7 +156,7 @@ export const Navbar: React.FC = () => {
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={className}
                 >
-                  {link.label}
+                  {content}
                 </Link>
               );
             })}
@@ -233,14 +246,21 @@ export const Navbar: React.FC = () => {
                     ? isHome && location.hash === link.href.replace('/', '')
                     : location.pathname === link.href || location.pathname === `${link.href}/`;
 
+              const isSymbiosis = link.href === '/symbiosis-2026';
+
               const content = (
                 <>
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-xs text-muted/60 group-hover:text-accent">
                       0{idx + 1}
                     </span>
-                    <span className="font-display text-lg font-bold tracking-tight">
+                    <span className="font-display text-lg font-bold tracking-tight flex items-center gap-2">
                       {link.label}
+                      {isSymbiosis && (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                          LIVE
+                        </span>
+                      )}
                     </span>
                   </div>
                   {isActive ? (

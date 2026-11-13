@@ -41,6 +41,32 @@ export interface SocialLinks {
   email: string;
 }
 
+export interface Symbiosis2026Config {
+  title: string;
+  theme: string;
+  dateText: string;
+  timeText: string;
+  targetDate: string;
+  venue: string;
+  mode: string;
+  poster: {
+    webp: string;
+    jpg: string;
+    thumb: string;
+    alt: string;
+  };
+  registration: {
+    iacsUrl: string;
+    externalUrl: string;
+    isOpen: boolean;
+  };
+  highlights: Array<{
+    title: string;
+    description: string;
+    tag: string;
+  }>;
+}
+
 export interface SiteConfig {
   meta: {
     chapterName: string;
@@ -66,8 +92,11 @@ export interface SiteConfig {
   links: {
     application: string;
     registration: string;
+    iacsRegistration: string;
+    externalRegistration: string;
     social: SocialLinks;
   };
+  symbiosis2026: Symbiosis2026Config;
   registration: {
     /**
      * Toggling this single boolean activates or closes registration globally across the site.
@@ -145,6 +174,7 @@ export const siteConfig: SiteConfig = {
   navigation: {
     links: [
       { label: 'Home', href: '/' },
+      { label: 'Symbiosis 2026', href: '/symbiosis-2026' },
       { label: 'About', href: '/about' },
       { label: 'Events', href: '/events' },
       { label: 'Event Registration', href: '/register' },
@@ -159,7 +189,9 @@ export const siteConfig: SiteConfig = {
 
   links: {
     application: 'https://forms.gle/GwNzN3wYe1bhPccEA',
-    registration: 'https://forms.gle/GwNzN3wYe1bhPccEA',
+    registration: 'https://forms.gle/rAPYaphtVPBzuR2y6',
+    iacsRegistration: 'https://forms.gle/rAPYaphtVPBzuR2y6',
+    externalRegistration: 'https://forms.gle/RzRxEd9CAEPaM2Ph6',
     social: {
       instagram: 'https://instagram.com/placeholder_acsiacs',
       linkedin: 'https://linkedin.com/company/placeholder-acsiacs',
@@ -168,6 +200,54 @@ export const siteConfig: SiteConfig = {
       github: 'https://github.com/placeholder-acsiacs',
       email: 'mailto:acsiacs.studentchapter@gmail.com',
     },
+  },
+
+  symbiosis2026: {
+    title: 'Symbiosis 2026',
+    theme:
+      'Convergent Frontiers in Materials Science & Chemical Biology for Sustainable Development',
+    dateText: '15th December 2026',
+    timeText: '10:30 am onwards',
+    targetDate: '2026-12-15T10:30:00+05:30',
+    venue: 'CV Raman Hall, IACS, Kolkata',
+    mode: 'Hybrid mode (In-person & Virtual)',
+    poster: {
+      webp: 'images/events/symbiosis2026/symbiosis-2026-poster.webp',
+      jpg: 'images/events/symbiosis2026/symbiosis-2026-poster.jpg',
+      thumb: 'images/events/symbiosis2026/symbiosis-2026-poster-thumb.webp',
+      alt: 'Official Symbiosis 2026 Poster: Convergent Frontiers in Materials Science & Chemical Biology for Sustainable Development',
+    },
+    registration: {
+      iacsUrl: 'https://forms.gle/rAPYaphtVPBzuR2y6',
+      externalUrl: 'https://forms.gle/RzRxEd9CAEPaM2Ph6',
+      isOpen: true,
+    },
+    highlights: [
+      {
+        title: 'Materials Science & Nanotechnology',
+        description:
+          'Advanced functional materials, porous frameworks (MOFs & COFs), heterogeneous catalysis, and quantum modeling.',
+        tag: 'Materials',
+      },
+      {
+        title: 'Chemical Biology & Therapeutics',
+        description:
+          'Macromolecular interactions, targeted chemical delivery, bio-organic synthesis, and molecular diagnostic interfaces.',
+        tag: 'Chemical Biology',
+      },
+      {
+        title: 'Sustainable Development Goals',
+        description:
+          'Renewable solar energy conversion, sustainable synthetic chemistry, and eco-compatible catalytic solutions.',
+        tag: 'Sustainability',
+      },
+      {
+        title: 'Hybrid Scholarly Exchange',
+        description:
+          'Interactive keynote addresses, competitive student poster presentations, and nationwide hybrid delegate participation.',
+        tag: 'Keynote & Posters',
+      },
+    ],
   },
 
   registration: {

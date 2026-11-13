@@ -2,9 +2,10 @@ export interface SeoProps {
   title?: string;
   description?: string;
   canonical?: string;
+  image?: string;
 }
 
-export function updatePageSeo({ title, description, canonical }: SeoProps): void {
+export function updatePageSeo({ title, description, canonical, image }: SeoProps): void {
   if (typeof document === 'undefined') return;
 
   if (title) {
@@ -32,5 +33,12 @@ export function updatePageSeo({ title, description, canonical }: SeoProps): void
       document.head.appendChild(link);
     }
     link.setAttribute('href', canonical);
+  }
+
+  if (image) {
+    const ogImg = document.querySelector('meta[property="og:image"]');
+    if (ogImg) ogImg.setAttribute('content', image);
+    const twImg = document.querySelector('meta[name="twitter:image"]');
+    if (twImg) twImg.setAttribute('content', image);
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, CalendarCheck, Share2, ArrowUpRight, Lock } from 'lucide-react';
+import { FileText, CalendarCheck, Share2, ArrowUpRight, Lock, Sparkles } from 'lucide-react';
 import { siteConfig } from '@/content/site';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -86,11 +86,17 @@ export const Action: React.FC = () => {
             </div>
 
             <div>
+              <div className="flex items-center gap-1.5 mb-1">
+                <Sparkles className="w-3.5 h-3.5 text-accent animate-pulse" />
+                <span className="font-mono text-[10px] uppercase font-bold text-accent">
+                  Symbiosis 2026 Live
+                </span>
+              </div>
               <h2 className="font-display font-bold text-lg sm:text-xl text-foreground">
                 Event Registration
               </h2>
               <p className="text-xs sm:text-sm text-muted mt-1 leading-relaxed">
-                Registration for chapter symposia and delegate presentations.
+                Symbiosis 2026: Convergent Frontiers in Materials Science &amp; Chemical Biology.
               </p>
             </div>
           </div>
@@ -111,12 +117,19 @@ export const Action: React.FC = () => {
               </Button>
             )}
 
+            <a
+              href={`${import.meta.env.BASE_URL || '/'}symbiosis-2026`.replace('//', '/')}
+              className="text-xs font-mono text-center text-accent hover:underline mt-1 py-1 font-semibold flex items-center justify-center gap-1"
+            >
+              <span>Click to open Simbiosis (Symposium Page) →</span>
+            </a>
+
             {!isRegistrationOpen && (
               <a
                 href={siteConfig.links.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-mono text-center text-accent hover:underline mt-1 py-1"
+                className="text-xs font-mono text-center text-muted hover:text-foreground mt-0.5 py-0.5"
               >
                 Follow us for upcoming announcements →
               </a>
